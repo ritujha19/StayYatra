@@ -20,10 +20,12 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
+app.engine("ejs", ejsMate);
 app.use(cors());
 
-app.get("/",(req,res)=>{
-    res.send("welcome to wanderlust");
+//home route
+app.get("/", (req, res) => {
+    res.render("home.ejs");
 });
 
 //index route
