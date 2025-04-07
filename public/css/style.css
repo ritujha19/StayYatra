@@ -1,6 +1,10 @@
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important; 
+}
 /* navbar */
 .navbar{
     background-color: #ffffff;
+    font-size: 18px;
 }
 
 .fa-compass{
@@ -13,12 +17,127 @@
 }
 
 /* footer */
+.Global{
+    font-weight: 500;
+}
+
 .f-info a{
     text-decoration: none;
     color: #222222;
+    font-size: 15px;
 }
 
 .f-info-links a:hover{
     text-decoration: underline;
 }
 
+.f-info{
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #ebebeb;
+    padding: 15px 20px ;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.upper{
+    display: flex;
+    gap: 10px;
+}
+
+.msg{
+    display: flex;
+    gap: 5px;
+}
+
+.f-info-copyright{
+    font-size: 15px;
+}
+.f-info-socials{
+    display: flex;
+    gap: 20px;
+}
+
+.f-info-socials a{
+    font-size: 17px;
+}
+
+.f-info-socials a:hover{
+    color: #fe424d;
+}
+
+@media (max-width: 992px) {
+    .f-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .upper {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .msg {
+        flex-direction: row;
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 700px) {
+    .f-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .upper {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .msg {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+}
+
+/* card */
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 20rem !important;
+}
+
+.card-body{
+    padding: 0;
+}
+
+.card-heading{
+    font-size: 18px;
+}
+
+.card-text{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* show page */
+.show-card{
+    background-color: #ebebeb !important;
+}
+
+.show-img{
+    width: 100% !important;
+    height: 20rem!important;
+    padding: 15px !important;
+    border-radius: 30px !important;
+}
