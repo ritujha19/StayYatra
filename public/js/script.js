@@ -27,3 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
         simulateTouch: false
     });
 });
+document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const confirmDiv = document.querySelector('.confirm-delete');
+        confirmDiv.style.display = 'block';
+    });
+});
+
+document.querySelector('.confirm-delete .cancel').addEventListener('click', () => {
+    document.querySelector('.confirm-delete').style.display = 'none';
+});

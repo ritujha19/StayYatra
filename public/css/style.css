@@ -116,7 +116,7 @@ body{
     pointer-events: none;
 }
 
-/* card */
+/* card index page */
 .card{
     border: none !important;
     margin-bottom: 2rem;
@@ -163,6 +163,62 @@ body{
     border-radius: 30px !important;
 }
 
+.confirm-delete {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Ensure confirm dialog stays on top */
+.confirm-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 300px;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+}
+
+.confirm-box h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #222222;
+}
+
+.confirm-box p {
+    font-size: 0.95rem;
+    color: #666666;
+    margin-bottom:10px;
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.confirm-buttons button {
+    padding:10px;
+    font-size: 14px;
+}
+
+.confirm-buttons form {
+    display: inline;
+}
+
 /* edit page */
 .container-edit{
     max-width: 50%; 
@@ -173,4 +229,10 @@ body{
 .container-new{
     max-width: 50%; 
     margin: 0 auto;
+}
+
+.add-btn{
+    background-color:#fe424d !important;
+    color: white !important;
+    border: none !important;
 }

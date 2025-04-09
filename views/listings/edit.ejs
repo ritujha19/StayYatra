@@ -2,15 +2,19 @@
 
 <h3 class="text-center text-uppercase mb-4 mt-4">edit the listing</h3>
 <div class="container-edit">
-    <form action="/listing/<%= listing._id %>?_method=PUT" method="post">
+    <form action="/listing/<%= listing._id %>?_method=PUT" method="post" class="needs-validation" novalidate>
         <div class="mb-3">
             <label for="title" class="form-label">Title:</label>
             <input type="text" id="title" name="listing[title]" value="<%= listing.title %>" class="form-control border-dark-subtle" required>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a title.</div>
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label">Description:</label>
             <textarea class="form-control border-dark-subtle" id="description" rows="3" cols="10" name="listing[description]" required><%= listing.description %></textarea>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a description.</div>
         </div>
 
         <div class="mb-3">

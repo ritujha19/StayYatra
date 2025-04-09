@@ -2,26 +2,50 @@
 <div class="container-new mt-3">
     <h1 class="text-center mb-3 text-capitalize">Create a New Listing</h1>
     <p class="text-center fw-medium fs-5">Fill in the details below to create a new listing.</p>
-    <form action="/Listing" method="post">
-        <label for="title" class="form-label">Title:</label>
-        <input type="text" class="form-control mb-2 border-dark-subtle" id="title" name="title" required>
-        <label for="description" class="form-label">Description:</label>
-        <textarea id="description" name="description" rows="3" cols="10" class="form-control mb-2 border-dark-subtle" required></textarea>
-        <label for="image" class="form-label">Image URL:</label>
-        <input type="url" id="image" name="image" class="form-control mb-2 border-dark-subtle">
-        <div class="row mb-2">
+    <form action="/Listing" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" class="form-control border-dark-subtle" id="title" name="title" required>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a title.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" rows="3" cols="10" class="form-control border-dark-subtle" required></textarea>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a description.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image URL:</label>
+            <input type="url" id="image" name="image" class="form-control border-dark-subtle">
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a valid image URL.</div>
+        </div>
+
+        <div class="row mb-3">
             <div class="col-md-4">
                 <label for="price" class="form-label">Price:</label>
                 <input type="number" class="form-control border-dark-subtle" id="price" name="price" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please provide a valid price.</div>
             </div>
             <div class="col-md-8">
                 <label for="location" class="form-label">Location:</label>
                 <input type="text" id="location" class="form-control border-dark-subtle" name="location" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please provide a location.</div>
             </div>
         </div>
-        <label for="country" class="form-label">Country:</label>
-        <input type="text" id="country" name="country" class="form-control mb-4 border-dark-subtle" required>
-        <button type="submit" class="btn bg-info-subtle border-info text-info-emphansis">Create Listing</button>
+
+        <div class="mb-4">
+            <label for="country" class="form-label">Country:</label>
+            <input type="text" id="country" name="country" class="form-control border-dark-subtle" required>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a country.</div>
+        </div>
+
+        <button type="submit" class="btn add-btn">Create</button>
     </form> 
 </div>
-   
