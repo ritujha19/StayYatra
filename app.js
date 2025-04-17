@@ -6,6 +6,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
+const wrapAsync = require("./utils/wrapAsync.js");
+const expressError = require("./utils/expressError.js");
 const listingRoute = require("./routes/listingRoute.js");
 const cors = require("cors");
 
@@ -29,17 +31,17 @@ app.get("/", (req, res) => {
 });
 
 //index route
-app.get("/listing", async (req, res) => {
+app.get("/listing", wrapAsync(async (req, res) => {
     const allListings = await Listing.find({});
-    res.render("listings/index", { allListings }); // Corrected the path
-});
+    res.render("listings/index.ejs", { allListings }); // Corrected the path
+}));
 
 //show route
-app.get("/listing/:id/show", async (req, res) => {
+app.get("/listing/:id/show", wrapAsync(async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id);
     res.render("listings/show.ejs", { listing }); 
-});
+}));
 
 //create route
 app.get("/listing/new", (req, res) => {
@@ -47,27 +49,28 @@ app.get("/listing/new", (req, res) => {
 });
 
 //post route
-app.post("/Listing", async(req,res)=>{
+app.post("/listing", wrapAsync(async (req, res) => {
+    console.log(req.body); // Debugging: Log the incoming request body
     const newListing = new Listing(req.body);
     await newListing.save();
     res.redirect("/listing");
-});
+}));
 
 //edit route
-app.get("/listing/:id/edit", async (req, res) => {
+app.get("/listing/:id/edit", wrapAsync(async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id);
     res.render("listings/edit.ejs", { listing });
-});
+}));
 
 //update route
-app.put("/listing/:id", async (req, res) => {
+app.put("/listing/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
 
     // Validate ObjectId
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(400).send("Invalid ID format");
-    }
+    // if (!mongoose.Types.ObjectId.isValid(id)) {
+    //     return res.status(400).send("Invalid ID format");
+    // }
 
     // Ensure req.body.listing exists
     if (!req.body.listing) {
@@ -75,20 +78,27 @@ app.put("/listing/:id", async (req, res) => {
     }
 
     console.log(id);
-    try {
+
         await Listing.findByIdAndUpdate(id, { ...req.body.listing });
         res.redirect(`/listing/${id}/show`); // Interpolate the id value
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Error updating listing");
-    }
-});
+}));
 
 //delete route
-app.delete("/listing/:id", async (req, res) => {
+app.delete("/listing/:id", wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
     res.redirect("/listing");
+}));
+
+app.all("*", (req, res) => {
+    throw new expressError(404, "Page Not Found");
+});
+
+//error handling
+app.use((err, req, res, next) => {
+    let { statusCode, message } = err;
+    res.status(statusCode).send(message);
+
 });
 
 app.listen(2020,()=>{
