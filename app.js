@@ -9,6 +9,7 @@ const Listing = require("./models/listing.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const expressError = require("./utils/expressError.js");
 const listingRoute = require("./routes/listingRoute.js");
+const { listingSchema } = require("./schema.js");
 const cors = require("cors");
 
 // Database connection
@@ -50,7 +51,9 @@ app.get("/listing/new", (req, res) => {
 
 //post route
 app.post("/listing", wrapAsync(async (req, res) => {
-    console.log(req.body); // Debugging: Log the incoming request body
+    // Validate req.body.listing
+    let result = listingSchema.validate(req.body);
+    console.log(result);
     const newListing = new Listing(req.body);
     await newListing.save();
     res.redirect("/listing");
@@ -68,17 +71,12 @@ app.put("/listing/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
 
     // Validate ObjectId
-    // if (!mongoose.Types.ObjectId.isValid(id)) {
-    //     return res.status(400).send("Invalid ID format");
-    // }
-
-    // Ensure req.body.listing exists
-    if (!req.body.listing) {
-        return res.status(400).send("Missing listing data");
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        throw new expressError(400, "Invalid ObjectId");
     }
-
-    console.log(id);
-
+    if (!req.body.listing) {
+        throw new expressError(400, "Invalid listing data");
+    };
         await Listing.findByIdAndUpdate(id, { ...req.body.listing });
         res.redirect(`/listing/${id}/show`); // Interpolate the id value
 }));
@@ -90,15 +88,16 @@ app.delete("/listing/:id", wrapAsync(async (req, res) => {
     res.redirect("/listing");
 }));
 
-app.all("*", (req, res) => {
-    throw new expressError(404, "Page Not Found");
+app.use((req, res, next) => {
+    const err = new expressError(404, "Page Not Found");
+    next(err);
 });
 
 //error handling
 app.use((err, req, res, next) => {
-    let { statusCode, message } = err;
-    res.status(statusCode).send(message);
-
+    let { statusCode = 500, message= "something went wrong" } = err;
+    // res.status(statusCode).send(message);
+    res.status(statusCode).render("error.ejs", { err});
 });
 
 app.listen(2020,()=>{
