@@ -6,10 +6,11 @@ const path = require("path");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
+const Review = require("./models/reviews.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const expressError = require("./utils/expressError.js");
 const listingRoute = require("./routes/listingRoute.js");
-const { listingSchema } = require("./schema.js");
+const { listingSchema, reviewSchema } = require("./schema.js");
 const cors = require("cors");
 
 // Database connection
@@ -37,6 +38,15 @@ const validateListing = (req, res, next) => {
     }
 };
 
+const validateReview = (req, res, next) => {
+    let {error} = reviewSchema.validate(req.body);
+    if(error) {
+        const errMsg = error.details.map((el) => el.message).join(",");
+        throw new expressError(400, errMsg);
+    }else{
+        next();
+    }
+};
 //home route
 app.get("/", (req, res) => {
     res.render("home.ejs");
@@ -55,7 +65,7 @@ app.get(
     "/listing/:id/show",
     wrapAsync(async (req, res) => {
         const { id } = req.params;
-        const listing = await Listing.findById(id);
+        const listing = await Listing.findById(id).populate("reviews");
         res.render("listings/show.ejs", { listing }); 
     })
 );
@@ -110,6 +120,24 @@ app.delete(
         res.redirect("/listing");
     })
 );
+
+//reviews
+// post route
+app.post(
+    "/listing/:id/review",
+    validateReview,
+    wrapAsync(async (req, res) => {
+        const { id } = req.params;
+        const listing = await Listing.findById(id);
+        const review = new Review(req.body.review);
+        listing.reviews.push(review);
+        await review.save();
+       let result = await listing.save();
+       console.log(result);
+        res.redirect(`/listing/${id}/show`);
+    })
+);
+
 
 app.use((req, res, next) => {
     const err = new expressError(404, "Page Not Found");

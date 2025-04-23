@@ -219,6 +219,17 @@ body{
     display: inline;
 }
 
+.container-review{
+    max-width: 40%;  
+}
+
+
+.review-card{
+    width: 25rem !important;
+    background-color: #ebebeb !important;
+    border-radius: 1rem !important;
+}
+
 /* edit page */
 .container-edit{
     max-width: 50%; 
