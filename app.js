@@ -138,6 +138,22 @@ app.post(
     })
 );
 
+// delete review route
+app.delete("/listing/:id/review/:reviewId", wrapAsync( async(req,res)=>{
+    let { id, reviewId }= req.params;
+    await Listing.findByIdAndUpdate(id,  {$pull: {reviews: reviewId}});
+    await Review.findByIdAndDelete(reviewId);
+
+    res.redirect(`/listing/${id}/show`);
+} ));
+
+// Test route
+app.all("/listing/:id/reviews/:reviewId", (req, res) => {
+    console.log("Test route hit");
+    console.log("Method:", req.method);
+    console.log("Params:", req.params);
+    res.send("Test route");
+});
 
 app.use((req, res, next) => {
     const err = new expressError(404, "Page Not Found");

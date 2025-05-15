@@ -152,9 +152,9 @@ body{
 }
 
 /* show page */
-.show-card{
+/* .show-card{
     background-color: #ebebeb !important;
-}
+} */
 
 .show-img{
     width: 100% !important;
@@ -226,7 +226,7 @@ body{
 
 .review-card{
     width: 25rem !important;
-    background-color: #ebebeb !important;
+    /* background-color: #ebebeb !important; */
     border-radius: 1rem !important;
 }
 
