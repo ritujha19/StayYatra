@@ -26,15 +26,33 @@ document.addEventListener('DOMContentLoaded', () => {
         preventClicksPropagation: true,
         simulateTouch: false
     });
-});
-document.querySelectorAll('.delete-btn').forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const confirmDiv = document.querySelector('.confirm-delete');
-        confirmDiv.style.display = 'block';
+
+    // Review delete confirmation
+    const reviewDeleteForms = document.querySelectorAll('.review-delete-form');
+    reviewDeleteForms.forEach(form => {
+        form.addEventListener('submit', showReviewConfirmDialog);
+    });
+
+    // Confirm delete button
+    document.querySelector('.confirm-review-delete').addEventListener('click', () => {
+        if (currentReviewForm) {
+            currentReviewForm.submit();
+        }
+        document.querySelector('.review-confirm-delete').style.display = 'none';
+    });
+
+    // Cancel delete button
+    document.querySelector('.cancel-review-delete').addEventListener('click', () => {
+        document.querySelector('.review-confirm-delete').style.display = 'none';
+        currentReviewForm = null;
     });
 });
 
-document.querySelector('.confirm-delete .cancel').addEventListener('click', () => {
-    document.querySelector('.confirm-delete').style.display = 'none';
-});
+let currentReviewForm = null;
+
+function showReviewConfirmDialog(event) {
+    event.preventDefault();
+    currentReviewForm = event.target;
+    const confirmDialog = document.querySelector('.review-confirm-delete');
+    confirmDialog.style.display = 'flex';
+}

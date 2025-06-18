@@ -17,6 +17,14 @@ const validateListing = (req, res, next) => {
     }
 };
 
+const isLoggedIn = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    req.session.returnTo = req.originalUrl;
+    return res.redirect('/login');
+  }
+  next();
+};
+
 //index route
 router.get("/",
     wrapAsync(async (req, res) => {
@@ -36,13 +44,13 @@ router.get(
 );
 
 //create route
-router.get("/new", (req, res) => {
+router.get("/new",isLoggedIn, (req, res) => {
     res.render("listings/new.ejs");
 });
 
 //post route
 router.post(
-    "/",
+    "/",isLoggedIn,
     validateListing,
     wrapAsync(async (req, res) => {    
         const newListing = new Listing(req.body.listing);
