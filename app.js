@@ -13,7 +13,10 @@ const session = require('express-session');
 const passport = require('passport');
 const User = require('./models/user');
 const flash = require('connect-flash');
-const initializePassport = require('./config/passport');
+// const initializePassport = require('./config/passport');
+const LocalStrategy = require('passport-local')
+
+const { setLocals } = require('./middleware'); 
 
 // Database connection
 mongoose.connect('mongodb+srv://ritu05491:ritu2312@myproject.chwmz.mongodb.net/?retryWrites=true&w=majority&appName=myProject')
@@ -23,11 +26,12 @@ mongoose.connect('mongodb+srv://ritu05491:ritu2312@myproject.chwmz.mongodb.net/?
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 
 const sessionConfig = {
     secret: 'your-secret-key',
@@ -40,21 +44,19 @@ const sessionConfig = {
     }
 };
 
+
+// Passport configuration
 app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-// Initialize passport configuration
-initializePassport(passport);
+// ✅ Local strategy + session serialization
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-// Make flash messages available to all templates
-app.use((req, res, next) => {
-    res.locals.currentUser = req.user;
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
-    next();
-});
+app.use(setLocals); // Set res.locals for user & flash messages
 
 //home route
 app.get("/", (req, res) => {

@@ -20,4 +20,21 @@
             </ul>
         </div>
     </div>
+    <% if (currentUser) { %>
+        <div class="dropdown">
+            <a class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://i.pravatar.cc/40?u=<%= currentUser._id %>" alt="avatar" width="40" height="40" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="/user/profile">Update Profile</a></li>
+            <li><a class="dropdown-item" href="/user/my-listings">My Listings</a></li>
+            <li><a class="dropdown-item" href="/user/my-reviews">My Reviews</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    <% } else { %>
+        <a href="/auth/login" class="btn btn-sm btn-outline-primary me-2">Login</a>
+    <% } %>
+
 </nav>

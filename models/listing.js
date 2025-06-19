@@ -6,8 +6,8 @@ const listingSchema = new Schema({
         type: String,
         required: true,
     },
-    description:{
-        type:  String,
+    description: {
+        type: String,
         required: true,
     },
     image: {
@@ -18,12 +18,10 @@ const listingSchema = new Schema({
     price: Number,
     location: String,
     country: String,
-    owner:[
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-        },
-    ],
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
     reviews: [
         {
             type: mongoose.Schema.Types.ObjectId,
