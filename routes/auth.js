@@ -19,6 +19,7 @@ router.post('/register', async (req, res, next) => {
     const { email, username, password } = req.body;
     const user = new User({ email, username });
     const registeredUser = await User.register(user, password);
+    
     req.login(registeredUser, (err) => {
       if (err) return next(err);
       req.flash('success', 'Welcome to WanderLust!');

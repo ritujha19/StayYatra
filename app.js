@@ -67,6 +67,7 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoute);
 app.use("/listing", listingRoute);
 app.use("/listing/:id/review", reviewRoute);
+app.use("/user", require("./routes/user.js"));
 
 // 404 error handling for undefined routes
 app.all("/{*any}",(req,res,next)=>{

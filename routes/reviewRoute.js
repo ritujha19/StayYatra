@@ -27,7 +27,6 @@ router.post(
     res.redirect(`/listing/${id}/show`);
   })
 );
-
 // DELETE review - Only the author can delete
 router.delete(
   "/:reviewId",

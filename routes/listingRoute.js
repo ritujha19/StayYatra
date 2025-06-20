@@ -33,13 +33,16 @@ router.get(
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id)
-      .populate({
-        path: "reviews",
-        populate: { path: "author" },
-      })
-      .populate("owner");
-    res.render("listings/show.ejs", { listing });
-  })
+    .populate({
+      path: 'reviews',
+      populate: {
+        path: 'author'
+      }
+    })
+    .populate('owner');
+
+      res.render("listings/show.ejs", { listing });
+    })
 );
 
 // NEW - Only logged-in can access form
