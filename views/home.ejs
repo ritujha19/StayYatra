@@ -1,6 +1,6 @@
 <% layout("./layouts/boilerplate.ejs") %>
-<div class="container-home" >
-    <h1>Welcome to WanderLust</h1>
+<div class="container-home" data-aos="fade-right" >
+    <h1 >Welcome to WanderLust</h1>
     <br>
     <h5>Welcome to our website! &nbsp; &nbsp;We are glad to have you here. &nbsp; &nbsp;Explore our features and enjoy your stay.</h5>
     <div class="swiper text-center mt-4 mb-4">
@@ -15,9 +15,11 @@
     </div>
 
     <div class="auth mt-4 pt-5 fs-4">
-        <h6>Already have an account?  &nbsp; &nbsp; &nbsp; Sign in to access your account.</h6>
-        <a href="/auth/login" class="btn bg-primary-subtle text-primary-emphasis border border-primary-subtle rounded-3 btn-lg mb-4 mt-4">Sign In</a>
-        <h6>New to WanderLust?&nbsp; &nbsp; &nbsp;  Create an account to start your journey.</h6>
-        <a href="/auth/register" class="btn bg-primary-subtle text-primary-emphasis border border-primary-subtle rounded-3 btn-lg mb-4 mt-4">Sign Up</a>
+        <% if (!currentUser) { %>
+            <h6>Already have an account?  &nbsp; &nbsp; &nbsp; Sign in to access your account.</h6>
+            <a href="#" class="btn bg-primary-subtle text-primary-emphasis border border-primary-subtle rounded-3 btn-lg mb-4 mt-4" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</a>
+            <h6>New to WanderLust?&nbsp; &nbsp; &nbsp;  Create an account to start your journey.</h6>
+            <a href="#" class="btn bg-primary-subtle text-primary-emphasis border border-primary-subtle rounded-3 btn-lg mb-4 mt-4" data-bs-toggle="modal" data-bs-target="#registerModal">Sign Up</a>
+        <% } %>
     </div>
 </div>

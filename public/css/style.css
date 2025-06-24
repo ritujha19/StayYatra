@@ -2,6 +2,13 @@ body{
     font-family: "Plus Jakarta Sans", sans-serif !important; 
 }
 
+
+
+.fa-eye{
+    color: #fe424d;
+    font-size: 1rem;
+}
+
 /* navbar */
 .navbar{
     background-color: #ffffff;
@@ -15,6 +22,14 @@ body{
 
 .nav-link{
     color:#222222 !important;
+}
+.navbar-nav{
+    width: 100%;
+    padding: 0 25px !important;
+    justify-content: right!important;
+}
+.nav-item{
+    padding-right: 25px !important;
 }
 
 /* footer */
@@ -152,9 +167,6 @@ body{
 }
 
 /* show page */
-/* .show-card{
-    background-color: #ebebeb !important;
-} */
 
 .show-img{
     width: 100% !important;
@@ -211,11 +223,9 @@ body{
     min-width: 80px;
 }
 
-
 .container-review{
     max-width: 40%;  
 }
-
 
 .review-card{
     width: 25rem !important;
@@ -239,4 +249,23 @@ body{
     background-color:#fe424d !important;
     color: white !important;
     border: none !important;
+}
+
+/* auth pages */
+.container-register{
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.container-login{
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.btn-link{
+    text-decoration: none !important;
+}
+
+.btn-link:hover {
+    color: #fe424d !important;;
 }
