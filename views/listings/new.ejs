@@ -1,8 +1,8 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<div class="container-new">
+<div class="container-new" data-aos="zoom-out">
     <h1 class="text-center mb-3 text-capitalize">Create a New Listing</h1>
     <p class="text-center fw-medium fs-5">Fill in the details below to create a new listing.</p>
-    <form action="/Listing" method="post" class="needs-validation" novalidate>
+    <form action="/listing" method="post" class="needs-validation" novalidate>
         <div class="mb-3">
             <label for="title" class="form-label">Title:</label>
             <input type="text" class="form-control border-dark-subtle" id="title" name="title" required>

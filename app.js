@@ -4,17 +4,16 @@ const ejsMate = require("ejs-mate");
 const path = require("path");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
-const expressError = require("./utils/expressError.js");
+const ExpressError = require("./utils/expressError.js").default;
 const listingRoute = require("./routes/listingRoute.js");
 const reviewRoute = require("./routes/reviewRoute.js");
 const authRoute = require("./routes/auth.js");
 const cors = require("cors");
 const session = require('express-session');
 const passport = require('passport');
-const User = require('./models/user');
 const flash = require('connect-flash');
-// const initializePassport = require('./config/passport');
-const LocalStrategy = require('passport-local')
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
 
 const { setLocals } = require('./middleware'); 
 
@@ -44,18 +43,22 @@ const sessionConfig = {
     }
 };
 
-
-// Passport configuration
+// 1. Session middleware (must come BEFORE passport.session)
 app.use(session(sessionConfig));
-app.use(passport.initialize());
-app.use(passport.session());
+
+// 2. Flash middleware (after session)
 app.use(flash());
 
-// ✅ Local strategy + session serialization
+// 3. Passport initialization (after session)
+app.use(passport.initialize());
+app.use(passport.session());
+
+// 4. Passport strategy and serialization
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// 5. Set res.locals for user & flash messages (after passport)
 app.use(setLocals); // Set res.locals for user & flash messages
 
 //home route
@@ -71,7 +74,7 @@ app.use("/user", require("./routes/user.js"));
 
 // 404 error handling for undefined routes
 app.all("/{*any}",(req,res,next)=>{
-    next(new expressError(404,"page not found!"));
+    next(new ExpressError(404,"page not found!"));
 });
 
 //error handling

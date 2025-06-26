@@ -20,6 +20,12 @@ body{
     font-size: 2rem;
 }
 
+/* Add to your CSS file */
+.modal-content:focus {
+  outline: none;
+}
+
+
 .nav-link{
     color:#222222 !important;
 }
@@ -268,4 +274,25 @@ body{
 
 .btn-link:hover {
     color: #fe424d !important;;
+}
+
+/* Zoom-in animation for Bootstrap modal */
+@keyframes modalZoomIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal .modal-dialog {
+  transform: scale(1);
+  transition: none;
+}
+
+.modal.show .modal-dialog {
+  animation: modalZoomIn 0.2s cubic-bezier(0.4,0,0.2,1);
 }

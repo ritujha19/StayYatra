@@ -5,9 +5,14 @@ const Review = require('./models/reviews');
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
     req.session.returnTo = req.originalUrl;
-    
     req.flash('error', 'You must be signed in!');
-    return res.redirect('/auth/login');
+    if (req.query.mode === 'register') {
+      req.flash('triggerRegisterModal', true);
+    } else {
+      req.flash('triggerLoginModal', true);
+    }
+    // Redirect back to the page the user was on
+    return res.redirect(req.originalUrl); // or res.redirect(req.originalUrl);
   }
   next();
 };
@@ -16,8 +21,12 @@ module.exports.isLoggedIn = (req, res, next) => {
 module.exports.isOwner = async (req, res, next) => {
   const { id } = req.params;
   const listing = await Listing.findById(id);
-  if (!listing.owner.equals(req.user._id)) {
-    req.flash('error', 'You do not have permission to do that!');
+  if (!listing) {
+    req.flash('error', 'Listing not found!');
+    return res.redirect('/listing');
+  }
+  if (!req.user || !listing.owner || !listing.owner.equals(req.user._id)) {
+    req.flash('error', 'You do not have permission!');
     return res.redirect(`/listing/${id}/show`);
   }
   next();
@@ -34,10 +43,12 @@ module.exports.isReviewAuthor = async (req, res, next) => {
   next();
 };
 
-// ✅ Set res.locals for user & flash messages
+// ✅ Set res.locals for user & flash messages - FIXED
 module.exports.setLocals = (req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
+  res.locals.triggerLoginModal = req.flash('triggerLoginModal')[0];
+  res.locals.triggerRegisterModal = req.flash('triggerRegisterModal')[0];    
   next();
 };

@@ -1,72 +1,145 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("swiper initialized");
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("DEBUGGING MODAL SYSTEM —");
+
+  // Initialize Swiper first
+  if (document.querySelector('.swiper')) {
+    console.log("Initializing swiper...");
     const swiper = new Swiper('.swiper', {
-        loop: true,
-        autoplay: {
-            delay: 500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: false,
-        },
-        slidesPerView: 3,
-        spaceBetween: 0, // Remove space between slides
-        speed: 800,
-        centeredSlides: true,
-        effect: 'coverflow',
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            scale: 0.9, // Adjust scale to reduce gaps
-            slideShadows: true,
-        },
-        grabCursor: false,
-        touchRatio: 0,
-        preventClicks: true,
-        preventClicksPropagation: true,
-        simulateTouch: false
+      loop: true,
+      autoplay: {
+        delay: 500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false,
+      },
+      slidesPerView: 3,
+      spaceBetween: 0,
+      speed: 800,
+      centeredSlides: true,
+      effect: 'coverflow',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        scale: 0.9,
+        slideShadows: true,
+      },
+      preventClicks: true,
+      preventClicksPropagation: true,
+      simulateTouch: false
     });
+  }
 
-    // Review delete confirmation
-    const reviewDeleteForms = document.querySelectorAll('.review-delete-form');
-    reviewDeleteForms.forEach(form => {
-        form.addEventListener('submit', showReviewConfirmDialog);
-    });
+    // Debug: Check if required elements exist
+    const loginModalEl = document.getElementById('loginModal');
+    const registerModalEl = document.getElementById('registerModal');
+    const loginTrigger = document.getElementById('loginModalTrigger');
+    const registerTrigger = document.getElementById('registerModalTrigger');
+    const openRegisterFromLogin = document.getElementById('openRegisterFromLogin');
+    const openLoginFromRegister = document.getElementById('openLoginFromRegister');
 
-    // Confirm delete button
-    document.querySelector('.confirm-review-delete').addEventListener('click', () => {
-        if (currentReviewForm) {
-            currentReviewForm.submit();
+    console.log("Element check:");
+    console.log("- Login modal element:", !!loginModalEl);
+    console.log("- Register modal element:", !!registerModalEl);
+    console.log("- Login trigger:", !!loginTrigger);
+    console.log("- Register trigger:", !!registerTrigger);
+    console.log("- Register link in login modal:", !!openRegisterFromLogin);
+    console.log("- Login link in register modal:", !!openLoginFromRegister);
+
+    // Check Bootstrap Modal availability
+    if (typeof bootstrap === 'undefined' || typeof bootstrap.Modal === 'undefined') {
+        console.error("X Bootstrap Modal is not available!");
+        return;
+    }
+
+    console.log("• Bootstrap is available");
+
+    // Check trigger values
+    if (loginTrigger) {
+        console.log("Login trigger:", loginTrigger.dataset.show);
+    }
+
+    // Auto-show modals based on triggers
+    if (loginTrigger && loginTrigger.dataset.show === "true") {
+        console.log("Auto-showing login modal...");
+        try {
+            const loginModal = new bootstrap.Modal(loginModalEl);
+            loginModal.show();
+        } catch (error) {
+            console.error("Error showing login modal:", error);
         }
-        document.querySelector('.review-confirm-delete').style.display = 'none';
-    });
+    }
 
-    // Cancel delete button
-    document.querySelector('.cancel-review-delete').addEventListener('click', () => {
-        document.querySelector('.review-confirm-delete').style.display = 'none';
-        currentReviewForm = null;
-    });
+    if (registerTrigger && registerTrigger.dataset.show === "true") {
+        const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+        registerModal.show();
+    }
+
+    // Switch from Login to Register
+    if (openRegisterFromLogin) {
+        openRegisterFromLogin.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log("Switching from login to register...");
+            if (!registerModalEl) {
+                console.error("X Register modal element not found!");
+                alert("Register modal not found. Please check if registerModal is included.");
+                return;
+            }
+            
+            // Move focus away to avoid aria-hidden issues
+            document.activeElement.blur();
+            
+            // Attach the event listener BEFORE hiding
+            loginModalEl.addEventListener('hidden.bs.modal', function handler() {
+                console.log("Login modal hidden, now showing register modal.");
+                const registerModal = new bootstrap.Modal(registerModalEl);
+                registerModal.show();
+            }, { once: true });
+            
+            try {
+                const loginModal = bootstrap.Modal.getInstance(loginModalEl);
+                loginModal.hide();
+            } catch (error) {
+                console.error("Error hiding login modal:", error);
+            }
+        });
+    }
+    
+    // Switch from Register to Login
+    if (openLoginFromRegister) {
+        openLoginFromRegister.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log("Switching from register to login...");
+            
+            // Move focus away to avoid aria-hidden issues
+            document.activeElement.blur();
+            
+            registerModalEl.addEventListener('hidden.bs.modal', function handler() {
+                console.log("Register modal hidden, now showing login modal.");
+                const loginModal = new bootstrap.Modal(loginModalEl);
+                loginModal.show();
+            }, { once: true });
+            
+            try {
+                const registerModal = bootstrap.Modal.getInstance(registerModalEl);
+                registerModal.hide();
+            } catch (error) {
+                console.error("Error hiding register modal:", error);
+            }
+        });
+    }
+
+    // Clear error flash when modals are closed
+    if (loginModalEl) {
+        loginModalEl.addEventListener('hidden.bs.modal', function () {
+            const alert = loginModalEl.querySelector('.alert-danger');
+            if (alert) alert.remove();
+        });
+    }
+    if (registerModalEl) {
+        registerModalEl.addEventListener('hidden.bs.modal', function () {
+            const alert = registerModalEl.querySelector('.alert-danger');
+            if (alert) alert.remove();
+        });
+  }
 });
-
-let currentReviewForm = null;
-
-function showReviewConfirmDialog(event) {
-    event.preventDefault();
-    currentReviewForm = event.target;
-    const confirmDialog = document.querySelector('.review-confirm-delete');
-    confirmDialog.style.display = 'flex';
-}
-
-const togglePassword = document.querySelector("#togglePassword");
-const password = document.querySelector("#password");
-
-togglePassword.addEventListener("click", function () {
-    // toggle the type attribute
-    const type = password.getAttribute("type") === "password" ? "text" : "password";
-    password.setAttribute("type", type);
-
-    // toggle the eye icon (optional)
-    this.querySelector('i').classList.toggle("fa-eye");
-    this.querySelector('i').classList.toggle("fa-eye-slash");
-});
-

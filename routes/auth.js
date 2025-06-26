@@ -3,15 +3,15 @@ const router = express.Router();
 const passport = require('passport');
 const User = require('../models/user');
 
-// GET - Register form
-router.get('/register', (req, res) => {
-  res.render('auth/register.ejs');
-});
+// // GET - Register form
+// router.get('/register', (req, res) => {
+//   res.render('auth/register.ejs');
+// });
 
-// GET - Login form
-router.get('/login', (req, res) => {
-  res.render('auth/login.ejs');
-});
+// // GET - Login form
+// router.get('/login', (req, res) => {
+//   res.render('auth/login.ejs');
+// });
 
 // POST - Register new user
 router.post('/register', async (req, res, next) => {
@@ -23,7 +23,9 @@ router.post('/register', async (req, res, next) => {
     req.login(registeredUser, (err) => {
       if (err) return next(err);
       req.flash('success', 'Welcome to WanderLust!');
-      return res.redirect('/listing'); // ✅ use return
+      const redirectUrl = req.session.returnTo || '/listing';
+      delete req.session.returnTo;
+      return res.redirect(redirectUrl);
     });
   } catch (e) {
     req.flash('error', e.message);

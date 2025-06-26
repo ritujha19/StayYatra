@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const Listing = require("../models/listing.js");
 const wrapAsync = require("../utils/wrapAsync.js");
-const expressError = require("../utils/expressError.js").default;
+const expressError = require("../utils/expressError.js").default.default;
 const { listingSchema } = require("../schema.js");
 const { isLoggedIn, isOwner } = require("../middleware"); // ✅ Import middleware
 
