@@ -98,8 +98,8 @@ router.put(
 // DELETE - Only owner can delete
 router.delete(
   "/:id",
-  // isLoggedIn,
- // isOwner,
+  isLoggedIn,
+ isOwner,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
@@ -107,5 +107,17 @@ router.delete(
   })
 );
 
+// async function deleteAll() {
+//   try{
 
+//     await Listing.deleteMany({});
+//     console.log("All documents deleted");
+
+//     await mongoose.connection.close();
+//   } catch (err) {
+//     console.error("Error deleting documents:", err);
+//   }
+// }
+
+// deleteAll();
 module.exports = router;
