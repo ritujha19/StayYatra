@@ -1,0 +1,42 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<div class="container-edit" data-aos="fade-down">
+    <h3 class="text-center text-uppercase mb-4">edit the listing</h3>
+    <form action="/listing/<%= listing._id %>?_method=PUT" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" id="title" name="listing[title]" value="<%= listing.title %>" class="form-control border-dark-subtle" required>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a title.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea class="form-control border-dark-subtle" id="description" rows="3" cols="10" name="listing[description]" required><%= listing.description %></textarea>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a description.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image URL:</label>
+            <input type="text" id="image" name="listing[image]" value="<%= listing.image %>" class="form-control border-dark-subtle" required>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="price" class="form-label">Price:</label>
+                <input type="number" id="price" class="form-control border-dark-subtle" name="listing[price]" value="<%= listing.price %>" required>
+            </div>
+            <div class="col-md-8">
+                <label for="location" class="form-label">Location:</label>
+                <input type="text" class="form-control border-dark-subtle" id="location" name="listing[location]" value="<%= listing.location %>" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="country" class="form-label">Country:</label>
+            <input type="text" id="country" class="form-control border-dark-subtle" name="listing[country]" value="<%= listing.country %>" required>
+        </div>
+
+        <button type="submit" class="btn btn-outline-success bg-success-subtle text-success-emphansis mt-4">UPDATE</button>
+    </form>
+</div>
