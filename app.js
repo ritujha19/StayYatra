@@ -4,7 +4,7 @@ const ejsMate = require("ejs-mate");
 const path = require("path");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
-const ExpressError = require("./utils/expressError.js").default;
+const ExpressError = require("./utils/expressError.js");
 const listingRoute = require("./routes/listingRoute.js");
 const reviewRoute = require("./routes/reviewRoute.js");
 const authRoute = require("./routes/auth.js");
@@ -14,13 +14,16 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const MongoStore = require('connect-mongo');
 
 const { setLocals } = require('./middleware'); 
 
 // Database connection
-mongoose.connect('mongodb+srv://ritu05491:ritu2312@myproject.chwmz.mongodb.net/?retryWrites=true&w=majority&appName=myProject')
-.then(() => console.log('✅ Connected to MongoDB Atlas'))
-.catch(err => console.error('❌ MongoDB connection error:', err));
+const mongoUrl = 'mongodb+srv://ritu05491:ritu2312@myproject.chwmz.mongodb.net/?retryWrites=true&w=majority&appName=myProject';
+
+mongoose.connect(mongoUrl)
+  .then(() => console.log('✅ Connected to MongoDB Atlas'))
+  .catch(err => console.error('❌ MongoDB connection error:', err));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname,"views"));
@@ -34,16 +37,15 @@ app.use(express.json());
 
 const sessionConfig = {
     secret: 'your-secret-key',
+    store: MongoStore.create({ mongoUrl }),
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         httpOnly: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 1 week
-        maxAge: 1000 * 60 * 60 * 24 * 7
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
     }
 };
-
-// 1. Session middleware (must come BEFORE passport.session)
 app.use(session(sessionConfig));
 
 // 2. Flash middleware (after session)
@@ -66,6 +68,7 @@ app.get("/", (req, res) => {
     res.render("home.ejs");
 });
 
+
 // routes
 app.use("/auth", authRoute);
 app.use("/listing", listingRoute);
@@ -73,7 +76,7 @@ app.use("/listing/:id/review", reviewRoute);
 app.use("/user", require("./routes/user.js"));
 
 // 404 error handling for undefined routes
-app.all("/{*any}",(req,res,next)=>{
+ app.all("/{*any}",(req,res,next)=>{
     next(new ExpressError(404,"page not found!"));
 });
 

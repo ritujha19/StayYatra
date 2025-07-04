@@ -17,16 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
       centeredSlides: true,
       effect: 'coverflow',
       coverflowEffect: {
-        rotate: 50,
+        rotate: 30,
         stretch: 0,
-        depth: 100,
+        depth: 200,
         modifier: 1,
         scale: 0.9,
-        slideShadows: true,
+        slideShadows: false,
       },
       preventClicks: true,
       preventClicksPropagation: true,
-      simulateTouch: false
+      simulateTouch: false,
+      breakpoints: {
+        991: { slidesPerView: 2 },
+        600: { slidesPerView: 1 }
+    }
     });
   }
 
@@ -141,5 +145,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const alert = registerModalEl.querySelector('.alert-danger');
             if (alert) alert.remove();
         });
-  }
+  };
+
+  // Toggle password visibility for all password fields
+  document.querySelectorAll('.togglePassword').forEach(function(btn) {
+    btn.addEventListener('click', function () {
+      // Find the input in the same input group
+      const input = this.closest('.input-group').querySelector('.password-input');
+      if (!input) return;
+      const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+      input.setAttribute('type', type);
+      // Toggle the eye icon
+      const icon = this.querySelector('i');
+      if (icon) icon.classList.toggle('fa-eye-slash');
+    });
+  });
+
 });

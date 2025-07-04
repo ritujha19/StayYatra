@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const Listing = require("../models/listing.js");
 const wrapAsync = require("../utils/wrapAsync.js");
-const expressError = require("../utils/expressError.js").default.default;
+const expressError = require("../utils/expressError.js");
 const { listingSchema } = require("../schema.js");
 const { isLoggedIn, isOwner } = require("../middleware"); // ✅ Import middleware
 
@@ -98,13 +98,14 @@ router.put(
 // DELETE - Only owner can delete
 router.delete(
   "/:id",
-  isLoggedIn,
-  isOwner,
+  // isLoggedIn,
+ // isOwner,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
     res.redirect("/listing");
   })
 );
+
 
 module.exports = router;

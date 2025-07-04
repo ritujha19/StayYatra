@@ -1,5 +1,5 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<h1 class="mb-4" data-aos="fade-right">All Listings</h1>
+<h1 class="mb-4" data-aos="fade-right">Our <span class="samarkan-font text-danger-emphasis" id="Nivaas">Nivaas</span></h1>
 <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">
     <% for (let listing of allListings) { %>
         <a href="/listing/<%= listing._id %>/show" class="text-decoration-none">

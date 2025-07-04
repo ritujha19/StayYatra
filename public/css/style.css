@@ -1,8 +1,15 @@
+@font-face {
+  font-family:'Samarkan';
+  src: url('/fonts/samarkan.ttf') format('truetype');
+}
+
 body{
     font-family: "Plus Jakarta Sans", sans-serif !important; 
 }
 
-
+.modal-content:focus {
+  outline: none;
+}
 
 .fa-eye{
     color: #fe424d;
@@ -19,12 +26,6 @@ body{
     color: #fe424d;
     font-size: 2rem;
 }
-
-/* Add to your CSS file */
-.modal-content:focus {
-  outline: none;
-}
-
 
 .nav-link{
     color:#222222 !important;
@@ -88,7 +89,7 @@ body{
     color: #fe424d;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .f-info {
         flex-direction: column;
         align-items: center;
@@ -105,9 +106,13 @@ body{
         width: 100%;
         font-size: 14px;
     }
+
+     .swiper-slide img {
+    height: 220px;
+    }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     .f-info {
         flex-direction: column;
         align-items: flex-start;
@@ -124,17 +129,51 @@ body{
         gap: 5px;
         width: 100%;
     }
+
+    swiper-slide img {
+        height: 140px;
+        border-radius: 8px;
+    }
 }
 
 /* home page */
 .swiper {
     pointer-events: none;
     user-select: none;
-    width: 65%
+    width: 60%
 }
 
 .swiper-slide {
     pointer-events: none;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 350px;
+  object-fit: fill;
+  border-radius: 12px;
+}
+.cursor {
+    display: inline-block;
+    width: 1px;
+    animation: blink 0.8s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.samarkan-font {
+    font-family: 'Samarkan', serif !important;
+    color: purple; /* for debugging */
+    font-size: 2rem;
+    text-transform: capitalize !important;
+}
+
+#stayyatra, #Nivaas {
+    font-size: 3rem;
 }
 
 /* card index page */

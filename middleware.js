@@ -12,7 +12,7 @@ module.exports.isLoggedIn = (req, res, next) => {
       req.flash('triggerLoginModal', true);
     }
     // Redirect back to the page the user was on
-    return res.redirect(req.originalUrl); // or res.redirect(req.originalUrl);
+    return res.redirect('/listing'); // or res.redirect(req.originalUrl);
   }
   next();
 };

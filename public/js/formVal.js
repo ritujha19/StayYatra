@@ -23,19 +23,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.stopPropagation();
             }
 
-            const inputs = form.querySelectorAll('input, textarea');
-            inputs.forEach(input => addValidationFeedback(input));
+            // const inputs = form.querySelectorAll('input, textarea');
+            // inputs.forEach(input => addValidationFeedback(input));
 
             form.classList.add('was-validated');
         });
 
         // Real-time validation on input
-        const inputs = form.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('input', function() {
-                addValidationFeedback(this);
-            });
-        });
+        // const inputs = form.querySelectorAll('input, textarea');
+        // inputs.forEach(input => {
+        //     input.addEventListener('input', function() {
+        //         addValidationFeedback(this);
+        //     });
+        // });
     });
+    const profileForm = document.getElementById('profileForm');
+  if (profileForm) {
+    profileForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(profileForm);
+      const data = Object.fromEntries(formData.entries());
+      try {
+        const res = await fetch('/user/profile?_method=PUT', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+        if (res.ok) {
+          // Option 1: Redirect with JS
+          window.location.href = '/user/profile';
+          // Option 2: Show a success message without reload
+          // document.getElementById('successMsg').innerText = "Profile updated!";
+        } else {
+          alert('Update failed');
+        }
+      } catch (err) {
+        alert('Error updating profile');
+      }
+    });
+  }
+  
 });
 
