@@ -75,7 +75,7 @@ router.get(
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id);
-    res.render("listings/edit.ejs", { listing });
+    res.render("users/listing/edit.ejs", { listing });
   })
 );
 

@@ -15,6 +15,7 @@ router.post(
 
     const review = new Review(req.body.review);
     review.author = req.user._id; // ✅ Save author
+    review.listing = id; // Link to listing
     await review.save();
 
     listing.reviews.push(review);

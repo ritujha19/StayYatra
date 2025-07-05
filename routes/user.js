@@ -35,8 +35,15 @@ router.get('/my-listings', isLoggedIn, async (req, res) => {
 
 // ✅ My Reviews page
 router.get('/my-reviews', isLoggedIn, async (req, res) => {
-  const user = await User.findById(req.user._id).populate('userReview');
-  res.render('users/myReviews', { reviews: user.userReview });
+  const user = await User.findById(req.user._id)
+    .populate({
+      path: 'userReview',
+      populate: { path: 'listing' }
+    });
+    console.log(user.userReview);
+  res.render('users/myReviews', { user });
 });
+
+
 
 module.exports = router;

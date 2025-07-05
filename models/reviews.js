@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const listing = require("../../../../OneDrive/Desktop/webdev/backend/airbnd/models/listing");
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
@@ -21,6 +22,10 @@ const reviewSchema = new Schema({
         ref: "User",
         required: true,
     },
+    listing: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Listing",
+    }
 });
 
 module.exports = mongoose.model("Review", reviewSchema);
