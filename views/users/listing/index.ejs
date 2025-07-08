@@ -1,12 +1,13 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<div class="container mt-5">
+<div class="container mt-5" data-aos="fade-right">
     <h1 class="mb-4">My <span class="samarkan-font text-danger-emphasis" id="Nivaas">Nivaas</span></h1>
     <% if (listings && listings.length > 0) { %>
-        <div class="row">
+        <a href="/listing/new" class="btn btn-outline-primary mb-4">Create New Nivaas</a>
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-2">
             <% listings.forEach(function(listing) { %>
                 <% if (currentUser && listing.owner && listing.owner.equals(currentUser._id)) { %>
                     <div class="col-md-4 mb-4">
-                        <a href="/listing/<%= listing._id %>/show" class="text-decoration-none">
+                        <a href="/user/listing/<%= listing._id %>/show" class="text-decoration-none">
                         <div class="card col" data-aos="fade-up">
                             <img src="<%= listing.image %>" class="card-img-top" alt="nivaas_image">
                             <div class="card-img-overlay"></div>
@@ -20,6 +21,9 @@
             <% }); %>
         </div>
     <% } else { %>
-        <div class="alert alert-danger">You have not posted any listings yet.</div>
+        <div class="alert alert-info col-8 offset-2 text-center">
+            <h5>No Nivaas Yet !</h5>
+            <p>You have not posted any listing yet. Create your<a href="/listing/new"> Nivaas</a></p>
+        </div>
     <% } %>
 </div>

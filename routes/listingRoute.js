@@ -63,7 +63,7 @@ router.post(
     req.user.userListing.push(newListing._id); // ✅ Add to user
     await req.user.save();
 
-    res.redirect("/listing");
+    res.redirect("/user/my-listings");
   })
 );
 
@@ -91,7 +91,7 @@ router.put(
       throw new expressError(400, "Invalid ObjectId");
     }
     await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-    res.redirect(`/listing/${id}/show`);
+    res.redirect(`/user/listing/${id}/show`);
   })
 );
 
@@ -103,7 +103,7 @@ router.delete(
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
-    res.redirect("/listing");
+    res.redirect("/user/my-listings");
   })
 );
 

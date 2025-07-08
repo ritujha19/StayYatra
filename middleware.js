@@ -38,7 +38,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
   const review = await Review.findById(reviewId);
   if (!review.author.equals(req.user._id)) {
     req.flash('error', 'You do not have permission to do that!');
-    return res.redirect(`/listing/${id}/show`);
+    return res.redirect(`/user/my-reviews`);
   }
   next();
 };
@@ -48,6 +48,7 @@ module.exports.setLocals = (req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
+  res.locals.loginError = req.flash('loginError');
   res.locals.triggerLoginModal = req.flash('triggerLoginModal')[0];
   res.locals.triggerRegisterModal = req.flash('triggerRegisterModal')[0];    
   next();

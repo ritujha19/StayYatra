@@ -140,7 +140,7 @@ body{
 .swiper {
     pointer-events: none;
     user-select: none;
-    width: 60%
+    width: 60%;
 }
 
 .swiper-slide {
@@ -221,53 +221,43 @@ body{
     border-radius: 30px !important;
 }
 
-.confirm-delete {
+/* .confirm-delete {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-/* Ensure confirm dialog stays on top */
-.review-confirm-delete {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.review-confirm-delete .confirm-box {
+    width: 50%;
+    height:20vh;
     background-color: white;
-    padding: 2rem;
-    border-radius: 12px;
-    text-align: center;
-    max-width: 300px;
-    width: 90%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.review-confirm-delete .confirm-buttons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
+    align-items: center;
+    z-index: 1000;
+} */
+
+/* Centered overlay and blur effect */
+.confirm-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.review-confirm-delete .confirm-buttons button {
-    min-width: 80px;
+.confirm-delete-box {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  text-align: center;
+  min-width: 300px;
 }
+/* Ensure confirm dialog stays on top */
+
 
 .container-review{
     max-width: 40%;  
@@ -280,32 +270,21 @@ body{
 }
 
 /* edit page */
-.container-edit{
+.container-edit,
+.container-new,
+.container-profile{
     max-width: 50%; 
     margin: 0 auto;
 }
 
-/* new page */
-.container-new{
-    max-width: 50%; 
-    margin: 0 auto;
+#successMsg{
+    display: none;
+    margin-bottom: 1rem;
 }
-
 .add-btn{
     background-color:#fe424d !important;
     color: white !important;
     border: none !important;
-}
-
-/* auth pages */
-.container-register{
-    max-width: 50%;
-    margin: 0 auto;
-}
-
-.container-login{
-    max-width: 50%;
-    margin: 0 auto;
 }
 
 .btn-link{
@@ -335,4 +314,8 @@ body{
 
 .modal.show .modal-dialog {
   animation: modalZoomIn 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+.flash-message {
+    display: none !important;
 }

@@ -28,6 +28,46 @@ router.post(
     res.redirect(`/listing/${id}/show`);
   })
 );
+
+// UPDATE review - Only the author can update
+router.put( 
+  "/:reviewId",
+  isLoggedIn,
+  isReviewAuthor,
+  wrapAsync(async (req, res) => {
+    const { rating, comment } = req.body;
+        
+        // Validate input
+        if (!rating || !comment) {
+            req.flash('error', 'Rating and comment are required');
+            return res.redirect('/my-reviews');
+        }
+        
+        if (rating < 1 || rating > 5) {
+            req.flash('error', 'Rating must be between 1 and 5');
+            return res.redirect('/my-reviews');
+        }
+        
+        // Update the review
+        const updatedReview = await Review.findByIdAndUpdate(
+            req.params.reviewId,
+            { 
+                rating: Number(rating), 
+                comment: comment.trim(),
+                updatedAt: Date.now() // Add update timestamp
+            },
+            { new: true, runValidators: true }
+        );
+        
+        if (!updatedReview) {
+            req.flash('error', 'Review not found');
+            return res.redirect('/user/my-reviews');
+        }
+        
+        req.flash('success', 'Review updated successfully!');
+        res.redirect('/user/my-reviews');  
+  })
+);
 // DELETE review - Only the author can delete
 router.delete(
   "/:reviewId",

@@ -24,9 +24,22 @@
     <%- include("../includes/navbar.ejs") %>
     
     <div class="container flex-grow-1">
+        <% if (success && success.length > 0) { %>
+        <div class="alert alert-success alert-dismissible fade show w-100" role="alert"  data-aos="fade-right">
+            <%= success[0] %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <% } %>
+        <% if (error && error.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= error[0] %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+<% } %>
         <%- body %>
     </div>
 
+    <!-- ✅ Modals for login and register -->
     <div id="loginModalTrigger" data-show="<%= triggerLoginModal %>"></div>
     <div id="registerModalTrigger" data-show="<%= triggerRegisterModal %>"></div>
     
@@ -52,13 +65,17 @@
     <script src="/js/textstylingScript.js"></script>
     <!-- ✅ Initialize everything after DOM loads -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS
-            AOS.init({
-                duration: 1000,
-                once: true
-            });
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize AOS
+        AOS.init({
+          duration: 1000,
+          once: true
         });
+        if (loginError && loginError.length > 0) {
+          let loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+          loginModal.show();
+        } 
+      });
     </script>
 </body>
 </html>

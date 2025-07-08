@@ -12,19 +12,9 @@
             
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- Flash Messages -->
-                <% if (typeof success !== 'undefined' && success && success.length > 0) { %>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <i class="fas fa-check-circle me-2"></i><%= success %>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <% } %>
-                
-                <% if (typeof error !== 'undefined' && error && error.length > 0) { %>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fas fa-exclamation-circle me-2"></i><%= error %>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                <!-- Flash Messages -->                
+                <% if (loginError && loginError.length > 0) { %>
+                  <div class="alert alert-danger"><%= loginError[0] %></div>
                 <% } %>
                 
                 <!-- Login Form -->

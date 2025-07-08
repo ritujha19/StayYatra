@@ -1,7 +1,8 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<div class="container" data-aos="zoom-in-up">
+<div class="container-profile" data-aos="zoom-in-up">
+    <span id="successMsg" class=" p-3 text-success-emphasis bg-success-subtle border border-success-subtle rounded-3"></span>
     <h4 class="mb-4">Update Your Profile</h4>
-    <form action="/user/profile?_method=PUT" method="post" id="profileForm" novalidate class="needs-validation">
+    <form action="/user/profile?_method=PUT" method="post" id="profileForm" enctype="application/x-www-form-urlencoded" novalidate class="needs-validation">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" id="username-alt" name="username" value="<%= user.username %>" class="form-control form-control-sm border-dark-subtle" required>

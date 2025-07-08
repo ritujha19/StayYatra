@@ -18,15 +18,13 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) return next(err);
     if (!user) {
-      req.flash('error', 'Invalid username or password.');
-      return res.redirect('/'); // Stay on home so modal can show
+      req.flash('loginError', info.message); // Use a special key for login errors
+      return res.redirect('/#loginModal');   // Or however you open the modal
     }
     req.logIn(user, (err) => {
       if (err) return next(err);
-      req.flash('success', `Welcome back ${user.username}!`);
-      const redirectUrl = req.session.returnTo || '/listing';
-      delete req.session.returnTo;
-      return res.redirect(redirectUrl);
+      req.flash('success', 'Welcome back!');
+      return res.redirect('/');
     });
   })(req, res, next);
 });
@@ -39,7 +37,7 @@ router.post('/register', async (req, res, next) => {
     const registeredUser = await User.register(user, password);
     req.login(registeredUser, (err) => {
       if (err) return next(err);
-      req.flash('success', 'Welcome to WanderLust!');
+      req.flash('success', 'Welcome to StayYatra!');
       const redirectUrl = req.session.returnTo || req.originalUrl;
       delete req.session.returnTo;
       return res.redirect('/');

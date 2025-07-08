@@ -161,4 +161,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Listing delete confirmation
+  const deleteBtn = document.querySelector('.delete-btn');
+  const confirmOverlay = document.getElementById('confirm-delete-overlay');
+  const cancelBtn = document.querySelector('.confirm-overlay .cancel');
+
+  if (deleteBtn && confirmOverlay) {
+    deleteBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      confirmOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
+    });
+  }
+
+  if (cancelBtn && confirmOverlay) {
+    cancelBtn.addEventListener('click', function() {
+      confirmOverlay.style.display = 'none';
+      document.body.style.overflow = ''; // Restore scroll
+    });
+  }
 });
