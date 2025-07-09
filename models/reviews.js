@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const listing = require("../../../../OneDrive/Desktop/webdev/backend/airbnd/models/listing");
+const listing = require("./listing");
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
