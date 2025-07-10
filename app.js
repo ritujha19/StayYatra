@@ -67,6 +67,15 @@ passport.deserializeUser(User.deserializeUser());
 // ✅ 5. Set locals
 app.use(setLocals);
 
+// Add this test route
+app.get("/api/test", (req, res) => {
+    res.json({ 
+        message: "Backend is working!", 
+        timestamp: new Date().toISOString(),
+        status: "success"
+    });
+});
+
 // ✅ 6. Routes
 app.get("/", (req, res) => {
     res.render("home.ejs");
