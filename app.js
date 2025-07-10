@@ -75,6 +75,10 @@ app.get("/api/test", (req, res) => {
         status: "success"
     });
 });
+// Add this after your existing routes
+app.get("/test", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "test.html"));
+});
 
 // ✅ 6. Routes
 app.get("/", (req, res) => {
