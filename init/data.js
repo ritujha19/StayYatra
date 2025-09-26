@@ -122,7 +122,7 @@ const listings = [
   {
     title: "Cherrapunji, Meghalaya",
     description: "The land of living root bridges and waterfalls, with Khasi homestays and breathtaking monsoon landscapes.",
-    image: "https://www.adventurenation.com/blog/wp-content/uploads/2014/07/Living-root-bridge.jpg",
+    image: "https://s7ap1.scene7.com/is/image/incredibleindia/double-decker-living-root-bridge-cherrapunjee-meghalaya-city-ff?qlt=82&ts=1742165333655",
     price: 3600,
     location: "Cherrapunji, Meghalaya",
     country: "India"
@@ -194,7 +194,7 @@ const listings = [
   {
     title: "Chopta, Uttarakhand",
     description: "Known as the mini Switzerland of India, offers cedar forests, camping, and treks to Tungnath Temple.",
-    image: "https://www.manchalamushafir.com/wp-content/uploads/2023/10/chopta-image.jpg",
+    image: "https://www.manchalamushafir.com/chopta-uttarakhand-unveiling-the-serene-paradise-of-the-himalayas/images/chopta%20image.jpg",
     price: 1900,
     location: "Chopta, Uttarakhand",
     country: "India"
