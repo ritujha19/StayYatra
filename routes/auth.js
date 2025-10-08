@@ -3,16 +3,6 @@ const router = express.Router();
 const passport = require('passport');
 const User = require('../models/user');
 
-// // GET - Register form
-// router.get('/register', (req, res) => {
-//   res.render('auth/register.ejs');
-// });
-
-// // GET - Login form
-// router.get('/login', (req, res) => {
-//   res.render('auth/login.ejs');
-// });
-
 // POST - Login user (custom callback)
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
