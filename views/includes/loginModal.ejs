@@ -13,8 +13,8 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <!-- Flash Messages -->                
-                <% if (loginError && loginError.length > 0) { %>
-                  <div class="alert alert-danger"><%= loginError[0] %></div>
+                <% if (typeof loginError !== 'undefined' && loginError && loginError.length > 0) { %>
+                    <div class="alert alert-danger"><%= loginError[0] %></div>
                 <% } %>
                 
                 <!-- Login Form -->
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="mb-3 mt-1">
-                        <a href="/">Forget password ?</a>
+                        <a href="#" id="openForgotPasswordModal">Forget password?</a>
                     </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary">

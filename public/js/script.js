@@ -45,14 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const openLoginFromRegister = document.getElementById(
     "openLoginFromRegister"
   );
+  const forgotPasswordModalEl = document.getElementById("forgotPasswordModal");
+  const openForgotPasswordBtn = document.getElementById("openForgotPasswordModal");
 
-  // console.log("Element check:");
-  // console.log("- Login modal element:", !!loginModalEl);
-  // console.log("- Register modal element:", !!registerModalEl);
-  // console.log("- Login trigger:", !!loginTrigger);
-  // console.log("- Register trigger:", !!registerTrigger);
-  // console.log("- Register link in login modal:", !!openRegisterFromLogin);
-  // console.log("- Login link in register modal:", !!openLoginFromRegister);
+  console.log("Element check:");
+  console.log("- Login modal element:", !!loginModalEl);
+  console.log("- Register modal element:", !!registerModalEl);
+  console.log("- Login trigger:", !!loginTrigger);
+  console.log("- Register trigger:", !!registerTrigger);
+  console.log("- Register link in login modal:", !!openRegisterFromLogin);
+  console.log("- Login link in register modal:", !!openLoginFromRegister);
 
   // Check Bootstrap Modal availability
   if (
@@ -149,6 +151,30 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (error) {
         console.error("Error hiding register modal:", error);
       }
+    });
+  }
+
+  // Switch to Forgot Password modal
+  if (openForgotPasswordBtn && forgotPasswordModalEl) {
+    openForgotPasswordBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      console.log("Switching to forgot password modal...");
+
+      // Move focus away
+      document.activeElement.blur();
+
+      loginModalEl.addEventListener(
+        "hidden.bs.modal",
+        function handler() {
+          console.log("Login modal hidden, showing forgot password modal");
+          const forgotPasswordModal = new bootstrap.Modal(forgotPasswordModalEl);
+          forgotPasswordModal.show();
+        },
+        { once: true }
+      );
+
+      const loginModal = bootstrap.Modal.getInstance(loginModalEl);
+      loginModal.hide();
     });
   }
 

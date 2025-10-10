@@ -47,4 +47,64 @@ router.get('/logout', (req, res, next) => {
   });
 });
 
+// POST - Verify email for password reset 
+router.post('/verify-email', async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) {
+            return res.status(404).json({ 
+                success: false,
+                message: 'Email not found' 
+            });
+        }
+        res.json({ 
+            success: true,
+            message: 'Email verified' 
+        });
+    } catch (err) {
+        res.status(500).json({ 
+            success: false,
+            message: 'Server error' 
+        });
+    }
+});
+
+router.post('/reset-password', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        
+        if (!user) {
+            return res.status(404).json({ 
+                success: false,
+                message: 'User not found' 
+            });
+        }
+
+        // Use Passport's setPassword instead of bcrypt
+        await user.setPassword(password);
+        await user.save();
+
+        // Auto login after password reset
+        req.login(user, (err) => {
+            if (err) {
+                return res.status(500).json({ 
+                    success: false,
+                    message: 'Error logging in' 
+                });
+            }
+            res.json({ 
+                success: true,
+                message: 'Password reset successful' 
+            });
+        });
+
+    } catch (err) {
+        res.status(500).json({ 
+            success: false,
+            message: 'Server error' 
+        });
+    }
+});
+
 module.exports = router;
