@@ -39,29 +39,27 @@
                         </div>
                     </div>
                     
-                    <div>
-                        <label for="password" class="form-label">
-                            <i class="fas fa-lock me-1"></i>Password:
-                        </label>
-                        <div class="input-group">
-                            <input 
-                                type="password" 
-                                id="loginPassword" 
-                                name="password" 
-                                class="form-control password-input" 
-                                pattern="^.{8,12}$" 
-                                required
-                                placeholder="Enter your password">
-                            <button class="btn btn-outline-secondary togglePassword" onclick="clickBtn()" type="button">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                        <div class="valid-feedback">
-                            <i class="fas fa-check text-success"></i> Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Password must be 8 to 12 characters long.
-                        </div>
+                    <div class="input-group mb-3">
+                        <input 
+                            type="password" 
+                            class="form-control password-input" 
+                            id="password"
+                            name="password"
+                            required
+                        >
+                        <button 
+                            class="btn btn-outline-secondary togglePassword" 
+                            type="button"
+                            aria-label="Toggle password visibility"
+                        >
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="valid-feedback">
+                        <i class="fas fa-check text-success"></i> Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Password must be 8 to 12 characters long.
                     </div>
                     <div class="mb-3 mt-1">
                         <a href="#" id="openForgotPasswordModal">Forget password?</a>

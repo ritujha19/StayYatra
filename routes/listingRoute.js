@@ -6,6 +6,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const expressError = require("../utils/expressError.js");
 const { listingSchema } = require("../schema.js");
 const { isLoggedIn, isOwner } = require("../middleware"); // ✅ Import middleware
+const { render } = require("ejs");
 
 // Validate req.body.listing
 const validateListing = (req, res, next) => {
@@ -120,4 +121,10 @@ router.delete(
 // }
 
 // deleteAll();
+//book router
+router.get('/:id/book', isLoggedIn, wrapAsync(async (req, res) => {
+  const id = req.params.id;
+  const listing = await Listing.findById(id);
+  res.render('users/listing/book', { listing });
+}))
 module.exports = router;

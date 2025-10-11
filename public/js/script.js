@@ -192,30 +192,46 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Toggle password visibility for all password fields
-  document.querySelectorAll(".togglePassword").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      // Find the input in the same input group
-      const input =
-        this.closest(".input-group").querySelector(".password-input");
-      if (!input) return;
-      const type =
-        input.getAttribute("type") === "password" ? "text" : "password";
-      input.setAttribute("type", type);
-      // Toggle the eye icon
-      const icon = this.querySelector("i");
-      if (icon) {
-        // If currently showing fa-eye (open eye), switch to fa-eye-slash (closed)
-        if (icon.classList.contains("fa-eye")) {
-          icon.classList.remove("fa-eye");
-          icon.classList.add("fa-eye-slash");
-        } else {
-          icon.classList.remove("fa-eye-slash");
-          icon.classList.add("fa-eye");
-        }
-      }
+  function setupPasswordToggles() {
+    const toggleButtons = document.querySelectorAll('.togglePassword');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Toggle button clicked');
+            
+            // Find input field
+            const inputGroup = this.closest('.input-group');
+            const input = inputGroup.querySelector('.password-input');
+            
+            if (!input) {
+                console.error('Password input not found');
+                return;
+            }
+            
+            // Toggle password visibility
+            const currentType = input.type;
+            input.type = currentType === 'password' ? 'text' : 'password';
+            
+            // Toggle icon
+            const icon = this.querySelector('i');
+            if (icon) {
+                console.log('Changing icon from', icon.className);
+                if (currentType === 'password') {
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+                console.log('Icon changed to', icon.className);
+            }
+        });
     });
-  });
+}
+
+// Initialize on DOM load
+document.addEventListener('DOMContentLoaded', setupPasswordToggles);
 
   // Listing delete confirmation
   const deleteBtn = document.querySelector(".delete-btn");

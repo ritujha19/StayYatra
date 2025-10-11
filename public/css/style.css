@@ -319,3 +319,19 @@ body{
 .flash-message {
     display: none !important;
 }
+
+.togglePassword {
+    cursor: pointer;
+    padding: 0.375rem 0.75rem;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-left: none;
+}
+
+.togglePassword:hover {
+    background-color: #e9ecef;
+}
+
+.input-group .password-input {
+    border-right: none;
+}

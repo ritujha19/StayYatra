@@ -1,21 +1,52 @@
 <% layout("/layouts/boilerplate.ejs") %>
 <div class="container-profile" data-aos="zoom-in-up">
-    <span id="successMsg" class=" p-3 text-success-emphasis bg-success-subtle border border-success-subtle rounded-3"></span>
-    <h4 class="mb-4">Update Your Profile</h4>
-    <form action="/user/profile?_method=PUT" method="post" id="profileForm" enctype="application/x-www-form-urlencoded" novalidate class="needs-validation">
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" id="username-alt" name="username" value="<%= user.username %>" class="form-control form-control-sm border-dark-subtle" required>
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Please provide a username.</div>
-        </div>
+  <span
+    id="successMsg"
+    class="p-3 text-success-emphasis bg-success-subtle border border-success-subtle rounded-3"
+  ></span>
+  <h4 class="mb-4">Update Your Profile</h4>
+  <form
+    action="/user/profile?_method=PUT"
+    method="post"
+    id="profileForm"
+    enctype="application/x-www-form-urlencoded"
+    novalidate
+    class="needs-validation"
+  >
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        id="username-alt"
+        name="username"
+        value="<%= user.username %>"
+        class="form-control form-control-sm border-dark-subtle"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please provide a username.</div>
+    </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email-alt" name="email" value="<%= user.email %>" class="form-control form-control-sm border-dark-subtle" required>
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Please provide a email.</div>
-        </div> 
-        <button type="submit" class="btn btn-outline-success">Update Profile</button>
-    </form>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email-alt"
+        name="email"
+        value="<%= user.email %>"
+        class="form-control form-control-sm border-dark-subtle"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please provide a email.</div>
+    </div>
+    <div class="mb-3 mt-1 border border-dark-subtle p-2 rounded">
+      <a href="#" id="openForgotPasswordModal" class="text-decoration-none text-dark">
+        <i class="fas fa-key me-2"></i>Change Password
+      </a>
+    </div>
+    <button type="submit" class="btn btn-outline-success">
+      Update Profile
+    </button>
+  </form>
 </div>
