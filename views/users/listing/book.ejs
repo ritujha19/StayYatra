@@ -1,0 +1,62 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Book your <span class="samarkan-font text-success-emphasis">Nivaas </span> at <%= listing.title %></h3>
+                    
+                    <!-- Booking Form -->
+                    <form action="/listing/<%= listing._id %>/book" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Check-in Date:</label>
+                            <input type="text" class="form-control" id="checkinDate" name="checkin" 
+                                placeholder="Select check-in date" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Check-out Date:</label>
+                            <input type="text" class="form-control" id="checkoutDate" name="checkout" 
+                                placeholder="Select check-out date" required>
+                        </div>
+
+                        <!-- Price Display -->
+                        <div class="alert alert-info">
+                            <p class="mb-0">Price per night: ₹<%= listing.price %></p>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Book Now
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize checkin datepicker
+    const checkinPicker = flatpickr("#checkinDate", {
+        minDate: "today",
+        dateFormat: "Y-m-d",
+        onChange: function(selectedDates) {
+            // Update checkout min date when checkin is selected
+            checkoutPicker.set('minDate', selectedDates[0]);
+        }
+    });
+
+    // Initialize checkout datepicker
+    const checkoutPicker = flatpickr("#checkoutDate", {
+        minDate: "today",
+        dateFormat: "Y-m-d"
+    });
+
+    // Disable past dates for both pickers
+    const today = new Date();
+    checkinPicker.set('minDate', today);
+    checkoutPicker.set('minDate', today);
+});
+</script>
