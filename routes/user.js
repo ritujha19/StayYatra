@@ -83,8 +83,4 @@ router.get("/my-reviews", isLoggedIn, wrapAsync(async (req, res) => {
   }
 }));
 
-router.get("/payment", wrapAsync(async (req, res) => {
-  
-  res.render("users/payment.ejs");
-}));
 module.exports = router;

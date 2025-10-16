@@ -135,4 +135,19 @@ router.get('/:id/book', isLoggedIn, wrapAsync(async (req, res) => {
   const listing = await Listing.findById(id);
   res.render('users/listing/book', { listing });
 }))
+// Add this route after your existing routes
+router.post('/:id/book', isLoggedIn, wrapAsync(async (req, res) => {
+    const { id } = req.params;
+    const { checkin, checkout } = req.body;
+    
+    // Here you would normally:
+    // 1. Validate dates
+    // 2. Check availability
+    // 3. Create booking record
+    // 4. Process payment
+    
+    req.flash('success', 'Booking confirmed!');
+    res.redirect(`/listing/${id}/show`);
+}));
+
 module.exports = router;
