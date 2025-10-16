@@ -426,204 +426,327 @@ const listings = [
   },
   {
     title: "Spiti Valley Stone Cottage",
-    description: "Experience raw Himalayan beauty in a traditional stone cottage, with local meals and mountain views.",
-    image: "https://a0.muscache.com/im/pictures/miso/Hosting-2828795/original/dbcd1851-5fb0-456f-ab1d-9c255b7be168.jpeg?im_w=720",
+    description:
+      "Experience raw Himalayan beauty in a traditional stone cottage, with local meals and mountain views.",
+    image:
+      "https://a0.muscache.com/im/pictures/miso/Hosting-2828795/original/dbcd1851-5fb0-456f-ab1d-9c255b7be168.jpeg?im_w=720",
     price: 900,
     location: "Kaza, Himachal Pradesh",
     addons: [
-      "Guided Monastery Visits", "Traditional Meals", "Heater", "Mountain View", "Wi-Fi", "Free Parking"
-    ]
+      "Guided Monastery Visits",
+      "Traditional Meals",
+      "Heater",
+      "Mountain View",
+      "Wi-Fi",
+      "Free Parking",
+    ],
   },
   {
     title: "Coorg Coffee Estate Homestay",
-    description: "Stay on a beautiful coffee plantation in Coorg with fresh local brews and scenic walks.",
-    image: "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/93835d10-ba38-5242-8640-d05e63637aa9/d1d3938e-c060-561f-b224-1e83e6d54654.jpg",
+    description:
+      "Stay on a beautiful coffee plantation in Coorg with fresh local brews and scenic walks.",
+    image:
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/93835d10-ba38-5242-8640-d05e63637aa9/d1d3938e-c060-561f-b224-1e83e6d54654.jpg",
     price: 1200,
     location: "Coorg, Karnataka",
     addons: [
-      "Coffee Tour", "Local Cuisine", "Fireplace", "Eco Walks", "Wi-Fi", "Free Parking"
-    ]
+      "Coffee Tour",
+      "Local Cuisine",
+      "Fireplace",
+      "Eco Walks",
+      "Wi-Fi",
+      "Free Parking",
+    ],
   },
   {
     title: "Rishikesh Riverside Hostel",
-    description: "Budget hostel on the Ganges riverbank, ideal for backpackers and yoga lovers.",
-    image: "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/052570ac-7d2c-5b97-b519-0457f27fc12c/7cf24867-08c1-5cd1-9e59-d7b5266921ad.jpg",
+    description:
+      "Budget hostel on the Ganges riverbank, ideal for backpackers and yoga lovers.",
+    image:
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/052570ac-7d2c-5b97-b519-0457f27fc12c/7cf24867-08c1-5cd1-9e59-d7b5266921ad.jpg",
     price: 800,
     location: "Rishikesh, Uttarakhand",
     addons: [
-      "Daily Yoga", "Shared Kitchen", "Wi-Fi", "Lockers", "River View", "Tour Desk"
-    ]
+      "Daily Yoga",
+      "Shared Kitchen",
+      "Wi-Fi",
+      "Lockers",
+      "River View",
+      "Tour Desk",
+    ],
   },
   {
     title: "Shillong Cozy Homestay",
-    description: "Warm homestay in the hills of Shillong with homemade meals and a beautiful garden.",
+    description:
+      "Warm homestay in the hills of Shillong with homemade meals and a beautiful garden.",
     image: "https://images.unsplash.com/photo-1465146344425-f00d5f8b7885",
     price: 1100,
     location: "Shillong, Meghalaya",
     addons: [
-      "Breakfast Included", "Wi-Fi", "Garden Access", "Laundry Service", "Family Friendly", "Local Guide"
-    ]
+      "Breakfast Included",
+      "Wi-Fi",
+      "Garden Access",
+      "Laundry Service",
+      "Family Friendly",
+      "Local Guide",
+    ],
   },
   {
     title: "Sunderbans Eco Retreat",
-    description: "Live close to nature in eco cottages at the edge of the Sunderbans rainforest.",
+    description:
+      "Live close to nature in eco cottages at the edge of the Sunderbans rainforest.",
     image: "https://images.unsplash.com/photo-1424746219973-8fe3bd07d8e3",
     price: 1000,
     location: "Sundarbans, West Bengal",
     addons: [
-      "Boat Safari", "Organic Meals", "Night Watch Tower", "Solar Power", "Wi-Fi", "Guided Walks"
-    ]
+      "Boat Safari",
+      "Organic Meals",
+      "Night Watch Tower",
+      "Solar Power",
+      "Wi-Fi",
+      "Guided Walks",
+    ],
   },
   {
     title: "Auroville Earth House",
-    description: "Sustainable earth houses with meditation space and access to community activities.",
+    description:
+      "Sustainable earth houses with meditation space and access to community activities.",
     image: "https://images.unsplash.com/photo-1499696011215-16b732d1d132",
     price: 900,
     location: "Auroville, Tamil Nadu",
     addons: [
-      "Community Kitchen", "Yoga Classes", "Eco Workshops", "Bicycle Rent", "Wi-Fi", "Meditation Space"
-    ]
+      "Community Kitchen",
+      "Yoga Classes",
+      "Eco Workshops",
+      "Bicycle Rent",
+      "Wi-Fi",
+      "Meditation Space",
+    ],
   },
   {
     title: "Hampi Heritage Guest House",
-    description: "Stay among Hampi’s ancient ruins, stone courtyards, and vibrant local life.",
+    description:
+      "Stay among Hampi’s ancient ruins, stone courtyards, and vibrant local life.",
     image: "https://images.unsplash.com/photo-1465101178521-c7f63495dfda",
     price: 950,
     location: "Hampi, Karnataka",
     addons: [
-      "Guided Ruins Tour", "Traditional Meals", "Wi-Fi", "Bicycle Rentals", "Pet Friendly", "Garden"
-    ]
+      "Guided Ruins Tour",
+      "Traditional Meals",
+      "Wi-Fi",
+      "Bicycle Rentals",
+      "Pet Friendly",
+      "Garden",
+    ],
   },
   {
     title: "Naggar Artist's Loft",
-    description: "Art-filled mountain loft with private studio and home-cooked food.",
+    description:
+      "Art-filled mountain loft with private studio and home-cooked food.",
     image: "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66",
     price: 1300,
     location: "Naggar, Himachal Pradesh",
     addons: [
-      "Mountain View", "Art Studio", "Wi-Fi", "Yoga Mats", "Homecooked Meals", "Balcony"
-    ]
+      "Mountain View",
+      "Art Studio",
+      "Wi-Fi",
+      "Yoga Mats",
+      "Homecooked Meals",
+      "Balcony",
+    ],
   },
   {
     title: "Cherrapunji Rainforest Retreat",
-    description: "Sleep to the sound of rain with lush green views near living root bridges.",
+    description:
+      "Sleep to the sound of rain with lush green views near living root bridges.",
     image: "https://images.unsplash.com/photo-1444065381814-865dc9da92ba",
     price: 950,
     location: "Cherrapunji, Meghalaya",
     addons: [
-      "Waterfall Trek", "Rainforest View", "Homecooked Meals", "Guided Tours", "Wi-Fi", "Nature Walks"
-    ]
+      "Waterfall Trek",
+      "Rainforest View",
+      "Homecooked Meals",
+      "Guided Tours",
+      "Wi-Fi",
+      "Nature Walks",
+    ],
   },
   {
     title: "Kolkata Heritage Hostel",
-    description: "Budget-friendly hostel with colonial architecture, close to museums and markets.",
+    description:
+      "Budget-friendly hostel with colonial architecture, close to museums and markets.",
     image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
     price: 650,
     location: "Park Street, Kolkata",
     addons: [
-      "Wi-Fi", "Breakfast", "Lockers", "Tour Desk", "Reading Room", "Laundry Service"
-    ]
+      "Wi-Fi",
+      "Breakfast",
+      "Lockers",
+      "Tour Desk",
+      "Reading Room",
+      "Laundry Service",
+    ],
   },
   {
     title: "Gokarna Beach Tent",
-    description: "Simple beach tent steps from the Arabian Sea, great for surfers and solo travelers.",
+    description:
+      "Simple beach tent steps from the Arabian Sea, great for surfers and solo travelers.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
     price: 700,
     location: "Gokarna, Karnataka",
     addons: [
-      "Beach Access", "Breakfast", "Wi-Fi", "Surf Rentals", "Campfire", "Shower Facility"
-    ]
+      "Beach Access",
+      "Breakfast",
+      "Wi-Fi",
+      "Surf Rentals",
+      "Campfire",
+      "Shower Facility",
+    ],
   },
   {
     title: "Udaipur Homestay",
-    description: "Family-run budget homestay near Lake Pichola, walkable to city sights.",
+    description:
+      "Family-run budget homestay near Lake Pichola, walkable to city sights.",
     image: "https://images.unsplash.com/photo-1465156799763-2c087c332922",
     price: 950,
     location: "Udaipur, Rajasthan",
     addons: [
-      "Free Breakfast", "Wi-Fi", "Lake View", "Laundry Service", "Tour Desk", "Garden"
-    ]
+      "Free Breakfast",
+      "Wi-Fi",
+      "Lake View",
+      "Laundry Service",
+      "Tour Desk",
+      "Garden",
+    ],
   },
   {
     title: "Pune Youth Hostel",
-    description: "Central hostel for students and backpackers, with workstations and games.",
+    description:
+      "Central hostel for students and backpackers, with workstations and games.",
     image: "https://images.unsplash.com/photo-1445346366695-ed3f3111e2a0",
     price: 600,
     location: "Shivaji Nagar, Pune",
     addons: [
-      "Wi-Fi", "Shared Kitchen", "Game Room", "Study Area", "Lockers", "Breakfast"
-    ]
+      "Wi-Fi",
+      "Shared Kitchen",
+      "Game Room",
+      "Study Area",
+      "Lockers",
+      "Breakfast",
+    ],
   },
   {
     title: "Jodhpur Blue City Guest House",
-    description: "Cosy guesthouse in the heart of the blue city, steps from the fort.",
+    description:
+      "Cosy guesthouse in the heart of the blue city, steps from the fort.",
     image: "https://images.unsplash.com/photo-1454023492550-5696f8ff10e1",
     price: 850,
     location: "Old City, Jodhpur",
     addons: [
-      "Rooftop Dining", "Wi-Fi", "City Tours", "Pet Friendly", "Breakfast", "Laundry Service"
-    ]
+      "Rooftop Dining",
+      "Wi-Fi",
+      "City Tours",
+      "Pet Friendly",
+      "Breakfast",
+      "Laundry Service",
+    ],
   },
   {
     title: "Darjeeling Tea Estate Hostel",
-    description: "Backpackers’ hostel surrounded by tea gardens and mountain air.",
+    description:
+      "Backpackers’ hostel surrounded by tea gardens and mountain air.",
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c",
     price: 1200,
     location: "Darjeeling, West Bengal",
     addons: [
-      "Tea Tasting", "Wi-Fi", "Breakfast", "Mountain View", "Shared Kitchen", "Lockers"
-    ]
+      "Tea Tasting",
+      "Wi-Fi",
+      "Breakfast",
+      "Mountain View",
+      "Shared Kitchen",
+      "Lockers",
+    ],
   },
   {
     title: "Ajmer Dargah Budget Lodge",
-    description: "Simple lodge near the Ajmer Sharif Dargah, welcoming pilgrims and tourists.",
+    description:
+      "Simple lodge near the Ajmer Sharif Dargah, welcoming pilgrims and tourists.",
     image: "https://images.unsplash.com/photo-1505691723518-43b9ef9fd2d8",
     price: 700,
     location: "Ajmer, Rajasthan",
     addons: [
-      "Wi-Fi", "Breakfast", "Tour Desk", "Fan Room", "Laundry Service", "Family Rooms"
-    ]
+      "Wi-Fi",
+      "Breakfast",
+      "Tour Desk",
+      "Fan Room",
+      "Laundry Service",
+      "Family Rooms",
+    ],
   },
   {
     title: "Bandipur Forest Camp",
-    description: "Wildlife camp near Bandipur Tiger Reserve, with guided safaris and bonfires.",
+    description:
+      "Wildlife camp near Bandipur Tiger Reserve, with guided safaris and bonfires.",
     image: "https://images.unsplash.com/photo-1442888498266-38ffec3eaf0a",
     price: 1300,
     location: "Bandipur, Karnataka",
     addons: [
-      "Safari Booking", "Campfire", "Breakfast", "Wi-Fi", "Nature Walks", "Parking"
-    ]
+      "Safari Booking",
+      "Campfire",
+      "Breakfast",
+      "Wi-Fi",
+      "Nature Walks",
+      "Parking",
+    ],
   },
   {
     title: "Pushkar Backpacker Hostel",
-    description: "Boho hostel close to Pushkar Lake and temple, popular with international travelers.",
+    description:
+      "Boho hostel close to Pushkar Lake and temple, popular with international travelers.",
     image: "https://images.unsplash.com/photo-1482062364825-616fd23b8fc1",
     price: 900,
     location: "Pushkar, Rajasthan",
     addons: [
-      "Wi-Fi", "Yoga Class", "Shared Kitchen", "Breakfast", "City Walks", "Roof Terrace"
-    ]
+      "Wi-Fi",
+      "Yoga Class",
+      "Shared Kitchen",
+      "Breakfast",
+      "City Walks",
+      "Roof Terrace",
+    ],
   },
   {
     title: "Amritsar Golden Stay",
-    description: "Restful rooms a stroll away from the Golden Temple, perfect for low-budget pilgrims.",
+    description:
+      "Restful rooms a stroll away from the Golden Temple, perfect for low-budget pilgrims.",
     image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a",
     price: 800,
     location: "Amritsar, Punjab",
     addons: [
-      "Wi-Fi", "Breakfast", "Tour Desk", "Fan Room", "Parking", "Laundry Service"
-    ]
+      "Wi-Fi",
+      "Breakfast",
+      "Tour Desk",
+      "Fan Room",
+      "Parking",
+      "Laundry Service",
+    ],
   },
   {
     title: "Mahabaleshwar Forest Cabin",
-    description: "Secluded wood cabin in Mahabaleshwar forest, ideal for nature lovers.",
+    description:
+      "Secluded wood cabin in Mahabaleshwar forest, ideal for nature lovers.",
     image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
     price: 1400,
     location: "Mahabaleshwar, Maharashtra",
     addons: [
-      "Nature Walks", "Wi-Fi", "Breakfast", "Fireplace", "Mountain View", "Parking"
-    ]
-  }
+      "Nature Walks",
+      "Wi-Fi",
+      "Breakfast",
+      "Fireplace",
+      "Mountain View",
+      "Parking",
+    ],
+  },
 ];
 
 module.exports = { data: listings };

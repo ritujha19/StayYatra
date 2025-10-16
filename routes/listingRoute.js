@@ -34,16 +34,24 @@ router.get(
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id)
-    .populate({
-      path: 'reviews',
-      populate: {
-        path: 'author'
-      }
-    })
-    .populate('owner');
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'author'
+        }
+      })
+      .populate('owner')
+      .select('+addons'); // Add this to ensure addons are included
 
-      res.render("listings/show.ejs", { listing });
-    })
+    if (!listing) {
+      throw new expressError(404, "Listing not found");
+    }
+
+    // Debug log to check if addons are present
+    console.log("Listing addons:", listing.addons);
+
+    res.render("listings/show.ejs", { listing });
+  })
 );
 
 // NEW - Only logged-in can access form
