@@ -65,18 +65,6 @@ router.get(
   })
 );
 
-// ✅ My Reviews page
-// router.get('/my-reviews',
-//    isLoggedIn,
-//    wrapAsync( async (req, res) => {
-//   const user = await User.findById(req.user._id)
-//     .populate({
-//       path: 'userReview',
-//       populate: { path: 'listing' }
-//     });
-//   res.render('users/myReviews', { user });
-// }
-// ));
 
 router.get("/my-reviews", isLoggedIn, wrapAsync(async (req, res) => {
   try {
@@ -93,5 +81,10 @@ router.get("/my-reviews", isLoggedIn, wrapAsync(async (req, res) => {
     console.log(error);
     res.render("users/myReviews", { user: [] });
   }
+}));
+
+router.get("/payment", wrapAsync(async (req, res) => {
+  
+  res.render("users/payment.ejs");
 }));
 module.exports = router;

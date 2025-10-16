@@ -1,49 +1,78 @@
 <nav class="navbar navbar-expand-md navbar-light border-bottom sticky-top mb-4">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/"> 
-            <i class="fa-regular fa-compass"></i>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav d-flex align-items-center" data-aos="fade-right">
-                <div class="nav-links d-flex align-items-center justify-content-around w-35">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/listing">Explore Nivaas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/listing/new">Create New Nivaas</a>
-                    </li>
-                </div>
-                <form class="d-flex mx-auto pe-5" style="width: 650px; max-width: 100%;">
-                    <input class="form-control form-control-md me-2 w-100" type="search" placeholder="Search">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/hoetzosy.json"
-                        trigger="hover"
-                        style="width:40px;height:40px">
-                    </lord-icon>
-                </form>
-                <% if (currentUser) { %>
-                <div class=" nav-item dropdown ms-auto">
-                        <a class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=<%= currentUser.username %>" class="rounded-circle" width="40">my profile
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="userDropdown"  data-aos="fade-down">
-                            <li><a class="dropdown-item" href="/user/profile">Update Profile</a></li>
-                            <li><a class="dropdown-item" href="/user/my-listings">My Nivaas</a></li>
-                            <li><a class="dropdown-item" href="/user/my-reviews">My Reviews</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
-                        </ul>
-                </div>
-                <% } else { %>
-                    <a href="#" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-                <% } %>
-            </ul>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="fa-regular fa-compass"></i>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav d-flex align-items-center" data-aos="fade-right">
+        <div
+          class="nav-links d-flex align-items-center justify-content-around w-35"
+        >
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/listing">Explore Nivaas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/listing/new">Create New Nivaas</a>
+          </li>
         </div>
+
+        <% if (currentUser) { %>
+        <div class="nav-item dropdown ms-auto">
+          <a
+            class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+            href="#"
+            id="userDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://api.dicebear.com/7.x/avataaars/svg?seed=<%= currentUser.username %>"
+              class="rounded-circle"
+              width="40"
+            />my profile
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end text-small shadow"
+            aria-labelledby="userDropdown"
+            data-aos="fade-down"
+          >
+            <li>
+              <a class="dropdown-item" href="/user/profile">Update Profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/user/my-listings">My Nivaas</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/user/my-reviews">My Reviews</a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
+          </ul>
+        </div>
+        <% } else { %>
+        <a
+          href="#"
+          class="btn btn-outline-info"
+          data-bs-toggle="modal"
+          data-bs-target="#loginModal"
+          >Login</a
+        >
+        <% } %>
+      </ul>
     </div>
+  </div>
 </nav>
