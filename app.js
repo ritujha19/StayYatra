@@ -67,18 +67,6 @@ passport.deserializeUser(User.deserializeUser());
 // ✅ 5. Set locals
 app.use(setLocals);
 
-// Add this test route
-app.get("/api/test", (req, res) => {
-    res.json({ 
-        message: "Backend is working!", 
-        timestamp: new Date().toISOString(),
-        status: "success"
-    });
-});
-// Add this after your existing routes
-app.get("/test", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "test.html"));
-});
 
 // ✅ 6. Routes
 app.get("/", (req, res) => {

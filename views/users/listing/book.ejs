@@ -12,7 +12,7 @@
           </h3>
 
           <!-- Booking Form -->
-          <form action="/listing/<%= listing._id %>/book" method="POST" onsubmit="return false;">
+          <form action="/listing/<%= listing._id %>/book" method="POST" id="bookingForm" class="needs-validation" novalidate>
             <div class="mb-3">
               <label class="form-label">Check-in Date:</label>
               <input
@@ -23,6 +23,8 @@
                 placeholder="Select check-in date"
                 required
               />
+              <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please select check-in date.</div>
             </div>
 
             <div class="mb-3">
@@ -35,6 +37,8 @@
                 placeholder="Select check-out date"
                 required
               />
+              <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please select check-out date.</div>
             </div>
 
             <div

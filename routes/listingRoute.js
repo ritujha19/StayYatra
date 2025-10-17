@@ -47,9 +47,6 @@ router.get(
       throw new expressError(404, "Listing not found");
     }
 
-    // Debug log to check if addons are present
-    console.log("Listing addons:", listing.addons);
-
     res.render("listings/show.ejs", { listing });
   })
 );
@@ -134,7 +131,8 @@ router.get('/:id/book', isLoggedIn, wrapAsync(async (req, res) => {
   const id = req.params.id;
   const listing = await Listing.findById(id);
   res.render('users/listing/book', { listing });
-}))
+}));
+
 // Add this route after your existing routes
 router.post('/:id/book', isLoggedIn, wrapAsync(async (req, res) => {
     const { id } = req.params;
