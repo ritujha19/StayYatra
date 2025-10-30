@@ -126,6 +126,7 @@ router.delete(
 // }
 
 // deleteAll();
+
 //book router
 router.get('/:id/book', isLoggedIn, wrapAsync(async (req, res) => {
   const id = req.params.id;

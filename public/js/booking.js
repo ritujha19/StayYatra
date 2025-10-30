@@ -1,52 +1,55 @@
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("Booking JS loaded");
   const pricePerNight = Number(document.getElementById("listing-data").dataset.price);
 
+ document.addEventListener("DOMContentLoaded", function () {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
 
-  // --- Air Datepicker Setup ---
-  let checkinPicker, checkoutPicker;
+  const checkinElem = document.getElementById('checkinDate');
+  const checkoutElem = document.getElementById('checkoutDate');
 
-  checkinPicker = new AirDatepicker('#checkinDate', {
-    minDate: tomorrow,
-    dateFormat: 'dd-MM-yyyy',
-    autoClose: true,
-    onSelect: function ({date}) {
-      if (date) {
-        // Set min/max for checkout (1 to 5 nights after check-in)
-        let minCheckout = new Date(date);
-        minCheckout.setDate(minCheckout.getDate() + 1);
-        let maxCheckout = new Date(date);
-        maxCheckout.setDate(maxCheckout.getDate() + 5);
+  // Vanilla JS Datepicker setup
+  const checkinPicker = new Datepicker(checkinElem, {
+    format: 'dd-mm-yyyy',
+    autohide: true,
+    minDate: tomorrow
+  });
 
-        checkoutPicker.update({
-          minDate: minCheckout,
-          maxDate: maxCheckout
-        });
+  const checkoutPicker = new Datepicker(checkoutElem, {
+    format: 'dd-mm-yyyy',
+    autohide: true
+  });
 
-        // If current checkout value is out of range, clear it
-        const checkoutInput = document.getElementById('checkoutDate');
-        if (checkoutInput.value) {
-          const [d, m, y] = checkoutInput.value.split('-');
-          const dt = new Date(`${y}-${m}-${d}`);
-          if (dt < minCheckout || dt > maxCheckout) {
-            checkoutInput.value = '';
-          }
-        }
+  // When check-in changes, update checkout min/max dates
+  checkinElem.addEventListener('change', function () {
+    const checkinDate = checkinPicker.getDate();
+    if (checkinDate) {
+      let minCheckout = new Date(checkinDate);
+      minCheckout.setDate(minCheckout.getDate() + 1);
+      let maxCheckout = new Date(checkinDate);
+      maxCheckout.setDate(maxCheckout.getDate() + 5);
+
+      checkoutPicker.setOptions({
+        minDate: minCheckout,
+        maxDate: maxCheckout
+      });
+
+      // Clear checkout if it's out of range
+      const checkoutDate = checkoutPicker.getDate();
+      if (checkoutDate && (checkoutDate < minCheckout || checkoutDate > maxCheckout)) {
+        checkoutElem.value = "";
       }
-      updateTotalPrice();
-      document.getElementById('checkinDate').dispatchEvent(new Event('change', { bubbles: true }));
     }
+    updateTotalPrice();
   });
 
-  checkoutPicker = new AirDatepicker('#checkoutDate', {
-    dateFormat: 'dd-MM-yyyy',
-    autoClose: true,
-    onSelect: function () {
-      updateTotalPrice();
-      document.getElementById('checkoutDate').dispatchEvent(new Event('change', { bubbles: true }));
-    }
+  checkoutElem.addEventListener('change', function () {
+    updateTotalPrice();
   });
+
+});
+
 
   // --- Price/duration display ---
   function updateTotalPrice() {
