@@ -1,0 +1,57 @@
+/* Main background and border */
+.datepicker-picker {
+  border: 1px solid #343a40;
+  border-radius: 30px !important;
+  border:2px solid rgb(255, 157, 122) ;
+  padding: 5px;
+  height: fit-content;
+  font-size: large;
+    font-weight: 400;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+/* Header buttons (next, previous, month) */
+.datepicker-controls button{
+    border-radius: 10px !important;
+    background-color: white !important;
+    border: none;
+    margin-bottom:5px ;
+}
+.datepicker-controls .view-switch{
+    border-radius: 0 !important;
+}
+/* Selected date color */
+.datepicker-cell.selected,
+.datepicker-cell.selected:hover {
+  background-color: #7b2cbf !important; /* purple tone */
+  color: #fff !important;
+  font-weight: 600;
+}
+
+/* Today’s date highlight */
+.datepicker-cell.today:not(.selected) {
+  background-color: #0dcaf0 !important; /* teal accent */
+  color: #fff !important;
+}
+
+/* Hover effect */
+.datepicker-cell:not(.disabled):hover {
+  background-color: #747478 !important;
+  color: #fff !important;
+}
+.days-of-week{
+   font-size: medium !important;
+   font-weight: 400 !important;
+   color: #747478 !important;
+   font-family:'Times New Roman', Times, serif;
+}
+.datepicker-cell{
+    font-size: medium;
+    height: 2rem !important;
+}
+
+.datepicker-controls .btn:hover {
+  background-color: #7b2cbf !important;
+  color: #fff !important;
+}
