@@ -1,51 +1,156 @@
 <% layout("/layouts/boilerplate.ejs") %>
 <div class="container-new" data-aos="zoom-out">
-    <h1 class="text-center mb-3 text-capitalize">Create a New <span class="samarkan-font text-danger-emphasis" id="Nivaas">Nivaas</span></h1>
-    <p class="text-center fw-medium fs-5">Fill in the details below to create a new Nivaas.</p>
-    <form action="/listing" method="post" class="needs-validation" novalidate>
-        <div class="mb-3">
-            <label for="title" class="form-label">Title:</label>
-            <input type="text" class="form-control border-dark-subtle" id="title" name="listing[title]" required>
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Please provide a title.</div>
-        </div>
+  <h1 class="text-center mb-3 text-capitalize">
+    Create a New
+    <span class="samarkan-font text-danger-emphasis" id="Nivaas">Nivaas</span>
+  </h1>
+  <p class="text-center fw-medium fs-5">
+    Fill in the details below to create a new Nivaas.
+  </p>
+  <form action="/listing" method="post" class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <input
+        type="text"
+        class="form-control border-dark-subtle"
+        id="title"
+        name="listing[title]"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please provide a title.</div>
+    </div>
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Description:</label>
-            <textarea id="description" name="listing[description]" rows="3" cols="10" class="form-control border-dark-subtle" required></textarea>
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Please provide a description.</div>
-        </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea
+        id="description"
+        name="listing[description]"
+        rows="3"
+        cols="10"
+        class="form-control border-dark-subtle"
+        required
+      ></textarea>
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please provide a description.</div>
+    </div>
 
-        <div class="mb-3">
-            <label for="image" class="form-label">Image URL:</label>
-            <input type="url" id="image" name="listing[image]" class="form-control border-dark-subtle">
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Please provide a valid image URL.</div>
-        </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Image URL:</label>
+      <input
+        type="url"
+        id="image"
+        name="listing[image]"
+        class="form-control border-dark-subtle"
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please provide a valid image URL.</div>
+    </div>
 
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label for="price" class="form-label">Price:</label>
-                <input type="number" class="form-control border-dark-subtle" id="price" name="listing[price]" required>
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Please provide a valid price.</div>
-            </div>
-            <div class="col-md-8">
-                <label for="location" class="form-label">Location:</label>
-                <input type="text" id="location" class="form-control border-dark-subtle" name="listing[location]" required>
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Please provide a location.</div>
-            </div>
-        </div>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="price" class="form-label">Price:</label>
+        <input
+          type="number"
+          class="form-control border-dark-subtle"
+          id="price"
+          name="listing[price]"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a valid price.</div>
+      </div>
+      <div class="col-md-8">
+        <label for="location" class="form-label">Location:</label>
+        <input
+          type="text"
+          id="location"
+          class="form-control border-dark-subtle"
+          name="listing[location]"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a location.</div>
+      </div>
+    </div>
 
-        <div class="mb-4">
-            <label for="country" class="form-label">Country:</label>
-            <input type="text" id="country" name="listing[country]" class="form-control border-dark-subtle" required>
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Please provide a country.</div>
-        </div>
+    <div class="mb-4">
+      <label for="country" class="form-label">Country:</label>
+      <input
+        type="text"
+        id="country"
+        name="listing[country]"
+        class="form-control border-dark-subtle"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please provide a country.</div>
+    </div>
+    <div class="mb-4">
+      <label for="add-on">Add-On:</label>
+      <div class="add-on-list">
+        <input
+          type="text"
+          id="add-on"
+          name="listing[addOn]"
+          class="form-control border-dark-subtle mb-3"
+          placeholder="e.g., Breakfast included, Airport pickup"
+          required
+        />
+        <input
+          type="text"
+          id="add-on"
+          name="listing[addOn]"
+          class="form-control border-dark-subtle mb-3"
+          placeholder="e.g., Breakfast included, Airport pickup"
+          required
+        />
+        <input
+          type="text"
+          id="add-on"
+          name="listing[addOn]"
+          class="form-control border-dark-subtle mb-3"
+          placeholder="e.g., Breakfast included, Airport pickup"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide atleast 3 add-on.</div>
+      </div>
+      <button
+        class="btn btn-info-subtle mt-3 border border-info-subtle"
+        onclick="addInput()"
+      >
+        Add <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
 
-        <button type="submit" class="btn add-btn">Create</button>
-    </form> 
+    <button type="submit" class="btn add-btn">Create</button>
+  </form>
 </div>
+
+<script>
+  function addInput() {
+    event.preventDefault();
+    const container = document.querySelector(".add-on-list");
+    const container1 = document.createElement("div");
+    const newInputDiv = document.createElement("div");
+    const newInput = document.createElement("input");
+    newInput.type = "text";
+    newInput.name = "listing[addOn]";
+    newInput.id = "add-on";
+    newInput.className = "form-control border-dark-subtle mb-3";
+    newInput.placeholder = "e.g., Breakfast included, Airport pickup";
+    const closeButton = document.createElement("div");
+    closeButton.innerHTML = '<div><button><i class="fa-regular fa-square-xmark"></i></button></div>';
+    
+    container1.className = "d-flex align-items-center justify-content-center";
+    newInputDiv.appendChild(newInput);
+    container1.appendChild(newInputDiv);
+    container1.appendChild(closeButton);
+    closeButton.onclick = function (e) {
+      e.preventDefault();
+      container.removeChild(container1);
+    };
+    container.appendChild(container1);
+  }
+</script>
