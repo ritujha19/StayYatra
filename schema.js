@@ -6,7 +6,8 @@ const listingSchema = joi.object({
         image: joi.string().allow("", null),
         price: joi.number().required().min(0),
         location: joi.string().required(),
-        country: joi.string().required()
+        country: joi.string().required(),
+        addons: joi.array().items(joi.string()).optional()
     }).required()
 });
 

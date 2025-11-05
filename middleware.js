@@ -1,7 +1,7 @@
 const Listing = require('./models/listing');
 const Review = require('./models/reviews');
 
-// ✅ Check if user is logged in
+//  Check if user is logged in
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
     req.session.returnTo = req.originalUrl;
@@ -17,7 +17,7 @@ module.exports.isLoggedIn = (req, res, next) => {
   next();
 };
 
-// ✅ Check if current user is the listing owner
+// Check if current user is the listing owner
 module.exports.isOwner = async (req, res, next) => {
   const { id } = req.params;
   const listing = await Listing.findById(id);
@@ -32,7 +32,7 @@ module.exports.isOwner = async (req, res, next) => {
   next();
 };
 
-// ✅ Check if current user is the review author
+//  Check if current user is the review author
 module.exports.isReviewAuthor = async (req, res, next) => {
   const { reviewId, id } = req.params;
   const review = await Review.findById(reviewId);
@@ -43,7 +43,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
   next();
 };
 
-// ✅ Set res.locals for user & flash messages - FIXED
+// Set res.locals for user & flash messages - FIXED
 module.exports.setLocals = (req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');

@@ -6,7 +6,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const expressError = require("../utils/expressError.js");
 const { listingSchema } = require("../schema.js");
 const { isLoggedIn, isOwner } = require("../middleware"); // ✅ Import middleware
-const { render } = require("ejs");
+
 
 // Validate req.body.listing
 const validateListing = (req, res, next) => {
