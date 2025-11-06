@@ -8,21 +8,25 @@
             <p class="card-text"><%= listing.description %></p>
             <p class="card-text">Price: &#8377; <%= listing.price.toLocaleString("en-IN") %></p>
             <p class="card-text">Location: <%= listing.location %></p>
-            <p class="card-text">Country: <%= listing.country %></p>
             <p class="card-text">
         <strong>What we provide:</strong>
-        <ul class="list-group mt-2">
-          <% if (listing.addons && listing.addons.length > 0) { %>
-            <% listing.addons.forEach(addon => { %>
-              <li class="list-group-item">
-                <i class="fas fa-check text-success me-2"></i>
-                <%= addon %>
-              </li>
-            <% }); %>
-          <% } else { %>
-            <li class="list-group-item">No amenities listed</li>
-          <% } %>
-        </ul>
+       <% 
+  // Filter out empty strings
+  const validAddons = listing.addons ? listing.addons.filter(addon => addon.trim() !== "") : []; 
+%>
+<ul class="list-group mt-2">
+  <% if (validAddons.length > 0) { %>
+    <% validAddons.forEach(addon => { %>
+      <li class="list-group-item">
+        <i class="fas fa-check text-success me-2"></i>
+        <%= addon %>
+      </li>
+    <% }); %>
+  <% } else { %>
+    <li class="list-group-item">No amenities listed</li>
+  <% } %>
+</ul>
+
       </p>
             <div class="btns d-flex justify-content-evenly">
                 <a href="/listing/<%= listing._id %>/edit" class="btn btn-outline-success bg-success-subtle text-success-emphasis">Edit</a>

@@ -73,31 +73,20 @@
         <div class="invalid-feedback">Please provide a location.</div>
       </div>
     </div>
-
-    <div class="mb-4">
-      <label for="country" class="form-label">Country:</label>
-      <input
-        type="text"
-        id="country"
-        name="listing[country]"
-        class="form-control border-dark-subtle"
-        required
-      />
-      <div class="valid-feedback">Looks good!</div>
-      <div class="invalid-feedback">Please provide a country.</div>
-    </div>
     <div class="mb-4">
       <label for="addon">Add Amenities:</label>
-      <div class="add-on-list">
+      <div class="add-on-list mt-3">
+      <div class="add-input col-md-11">
         <input
           type="text"
-          id="add-on"
+          id="add-on1"
           name="listing[addons][]"
           class="form-control border-dark-subtle mb-3"
           placeholder="e.g., Breakfast included, Airport pickup"
         />
+        </div>
         <div class="valid-feedback">Looks good!</div>
-        <div class="row mb-3" id="newInputContainer"></div>
+        <div  id="newInputContainer"></div>
       </div>
       <button
         class="btn btn-info-subtle mt-3 border border-info-subtle"
@@ -117,7 +106,7 @@
     const container = document.getElementById("newInputContainer");
     const newInputDiv = document.createElement("div");
     const newInput = document.createElement("input");
-    newInputDiv.className = "col-md-12 ";
+    newInputDiv.classList.add("col-md-11");
     newInput.type = "text";
     newInput.name = "listing[addons][]";
     newInput.id = "add-on";

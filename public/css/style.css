@@ -337,3 +337,8 @@ body{
     border-right: none;
 }
 
+#newInputContainer{
+    display: flex !important; 
+    flex-direction: row !important;
+    gap: 10px !important;
+}
