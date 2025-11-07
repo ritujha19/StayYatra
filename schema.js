@@ -18,4 +18,14 @@ const reviewSchema = joi.object({
     }).required()
 });
 
-module.exports = { listingSchema , reviewSchema };
+const bookingSchema = joi.object({
+    booking: joi.object({
+        checkin: joi.string().required(),
+        checkout: joi.string().required(),
+        adults: joi.number().required().min(1),
+        children: joi.number().required().min(0),
+        price: joi.number().required().min(0)
+    }).required()
+});
+
+module.exports = { listingSchema , reviewSchema , bookingSchema };

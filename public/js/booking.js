@@ -60,34 +60,38 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- PRICE DISPLAY HANDLER ---
   function updateTotalPrice() {
     const priceDisplay = document.querySelector(".alert-info p.mb-0");
-    if (!priceDisplay) return;
+    const totalPriceInput = document.getElementById("total-price-input");
+    
+    if (!priceDisplay || !totalPriceInput) return;
 
     const checkinStr = checkinElem.value;
     const checkoutStr = checkoutElem.value;
 
     if (checkinStr && checkoutStr) {
-      const [cd, cm, cy] = checkinStr.split("-");
-      const [cod, com, coy] = checkoutStr.split("-");
-      const checkinDate = new Date(`${cy}-${cm}-${cd}`);
-      const checkoutDate = new Date(`${coy}-${com}-${cod}`);
+        const [cd, cm, cy] = checkinStr.split("-");
+        const [cod, com, coy] = checkoutStr.split("-");
+        const checkinDate = new Date(`${cy}-${cm}-${cd}`);
+        const checkoutDate = new Date(`${coy}-${com}-${cod}`);
 
-      const nights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
-      if (nights > 0) {
-        const totalPrice = nights * pricePerNight;
-        priceDisplay.innerHTML = `
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="text-success fw-bold">Total for ${nights} nights: ₹${totalPrice}</span>
-          <span class="text-muted text-small d-block">includes all fees</span>
-        `;
-        return;
-      }
+        const nights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+        if (nights > 0) {
+            const totalPrice = nights * pricePerNight;
+            totalPriceInput.value = totalPrice; // Update hidden input
+            priceDisplay.innerHTML = `
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text-success fw-bold">Total for ${nights} nights: ₹${totalPrice}</span>
+                <span class="text-muted text-small d-block">includes all fees</span>
+            `;
+            return;
+        }
     }
 
     // Reset if no valid date range
+    totalPriceInput.value = pricePerNight; // Reset to per night price
     priceDisplay.innerHTML = `
-      Price per night: ₹${pricePerNight}
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <span class="text-muted text-small">includes all fees</span>
+        Price per night: ₹${pricePerNight}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-muted text-small">includes all fees</span>
     `;
   }
 
@@ -102,28 +106,37 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("guest-selected-label").textContent = label;
   }
 
+  // Update the guest counter functions
   document.querySelectorAll(".plus-btn").forEach((btn) => {
     btn.addEventListener("click", function () {
-      const type = this.getAttribute("data-type");
-      const countSpan = document.getElementById(type + "-count");
-      countSpan.textContent = parseInt(countSpan.textContent, 10) + 1;
-      updateGuestLabel();
+        const type = this.getAttribute("data-type");
+        const countSpan = document.getElementById(type + "-count");
+        const hiddenInput = document.getElementById(type + "-count-input");
+        const newValue = parseInt(countSpan.textContent, 10) + 1;
+        
+        countSpan.textContent = newValue;
+        hiddenInput.value = newValue; // Update hidden input
+        updateGuestLabel();
     });
-  });
+});
 
   document.querySelectorAll(".minus-btn").forEach((btn) => {
     btn.addEventListener("click", function () {
-      const type = this.getAttribute("data-type");
-      const countSpan = document.getElementById(type + "-count");
-      let current = parseInt(countSpan.textContent, 10);
-      if (type === "adult" && current > 1) {
-        countSpan.textContent = current - 1;
-      } else if (type === "child" && current > 0) {
-        countSpan.textContent = current - 1;
-      }
-      updateGuestLabel();
+        const type = this.getAttribute("data-type");
+        const countSpan = document.getElementById(type + "-count");
+        const hiddenInput = document.getElementById(type + "-count-input");
+        let current = parseInt(countSpan.textContent, 10);
+        
+        if (type === "adult" && current > 1) {
+            countSpan.textContent = current - 1;
+            hiddenInput.value = current - 1; // Update hidden input
+        } else if (type === "child" && current > 0) {
+            countSpan.textContent = current - 1;
+            hiddenInput.value = current - 1; // Update hidden input
+        }
+        updateGuestLabel();
     });
-  });
+});
 
   // Initialize labels and prices
   updateGuestLabel();
