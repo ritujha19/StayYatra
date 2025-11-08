@@ -234,15 +234,17 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', setupPasswordToggles);
 
   // Listing delete confirmation
-  const deleteBtn = document.querySelector(".delete-btn");
+  const deleteBtn = document.querySelectorAll(".delete-btn");
   const confirmOverlay = document.getElementById("confirm-delete-overlay");
   const cancelBtn = document.querySelector(".confirm-overlay .cancel");
 
   if (deleteBtn && confirmOverlay) {
-    deleteBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      confirmOverlay.style.display = "flex";
-      document.body.style.overflow = "hidden"; // Prevent background scroll
+    deleteBtn.forEach(btn => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        confirmOverlay.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+      });
     });
   }
 

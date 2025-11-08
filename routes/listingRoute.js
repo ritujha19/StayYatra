@@ -2,10 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 const Listing = require("../models/listing.js");
-const Booking = require("../models/booking.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 const expressError = require("../utils/expressError.js");
-const { listingSchema , bookingSchema} = require("../schema.js");
+const { listingSchema} = require("../schema.js");
 const { isLoggedIn, isOwner } = require("../middleware"); 
 
 
@@ -13,16 +12,6 @@ const { isLoggedIn, isOwner } = require("../middleware");
 // Validate req.body.listing
 const validateListing = (req, res, next) => {
   const { error } = listingSchema.validate(req.body);
-  if (error) {
-    const errMsg = error.details.map((el) => el.message).join(",");
-    throw new expressError(400, errMsg);
-  } else {
-    next();
-  }
-};
-
-const validateBooking = (req, res, next) => {
-  const { error } = bookingSchema.validate(req.body); 
   if (error) {
     const errMsg = error.details.map((el) => el.message).join(",");
     throw new expressError(400, errMsg);
@@ -75,10 +64,10 @@ router.post(
   validateListing,
   wrapAsync(async (req, res) => {
     const newListing = new Listing(req.body.listing);
-    newListing.owner = req.user._id; // ✅ Save owner
+    newListing.owner = req.user._id; 
     await newListing.save();
 
-    req.user.userListing.push(newListing._id); // ✅ Add to user
+    req.user.userListing.push(newListing._id);
     await req.user.save();
 
     res.redirect("/user/my-listings");
@@ -138,39 +127,5 @@ router.delete(
 // }
 
 // deleteAll();
-
-//book router
-router.get('/:id/book', isLoggedIn, wrapAsync(async (req, res) => {
-  const id = req.params.id;
-  const listing = await Listing.findById(id);
-  res.render('users/listing/bookForm', { listing });
-}));
-
-// Add this route after your existing routes
-router.post('/:id/book', isLoggedIn, validateBooking, wrapAsync(async (req, res) => {
-    const { id } = req.params;
-    let userId = req.user._id;
-    const { checkin, checkout, adults, children, price } = req.body.booking;
-    
-    const newBooking = new Booking({
-        checkin,
-        checkout,
-        adults,
-        children,
-        price,
-        listing: id,
-        user: userId
-    });
-
-    console.log("New booking data:", newBooking); // Debug log
-    await newBooking.save();
-    
-    req.user.userBooking.push(newBooking._id);
-    await req.user.save();
-    // console.log(req.user.userBooking);
-    
-    req.flash('success', 'Booking confirmed!');
-    res.redirect(`/user/mybookedNivaas`);
-}));
 
 module.exports = router;

@@ -92,9 +92,6 @@ router.get("/mybookedNivaas", isLoggedIn, wrapAsync(async (req, res) => {
                 select: 'title price location image'
             }
         });
-
-    console.log("User bookings:", user.userBooking); // Debug log
-
     res.render("users/myBookedNivaas", { 
         user,
         userBooking: user.userBooking.map(booking => booking.listing)

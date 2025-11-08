@@ -10,6 +10,8 @@ const ExpressError = require("./utils/expressError.js");
 const listingRoute = require("./routes/listingRoute.js");
 const reviewRoute = require("./routes/reviewRoute.js");
 const authRoute = require("./routes/auth.js");
+const userRoute = require("./routes/userRoute.js");
+const bookingRoute = require("./routes/bookingRoute.js");
 const cors = require("cors");
 const session = require('express-session');
 const passport = require('passport');
@@ -76,20 +78,24 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoute);
 app.use("/listing", listingRoute);
 app.use("/listing/:id/review", reviewRoute);
-app.use("/user", require("./routes/user.js"));
+app.use("/listing/:id/book", (req, res, next) => {
+    res.locals.id = req.params.id; // Pass the ID to res.locals
+    next();
+}, bookingRoute);
+app.use("/user", userRoute);
 
-// ✅ 7. 404 error handler
+// 404 error handler
 app.all("/{*any}", (req, res, next) => {
     next(new ExpressError(404, "page not found!"));
 });
 
-// ✅ 8. Error handler
+// Error handler
 app.use((err, req, res, next) => {
     let { statusCode = 500, message = "Something went wrong!" } = err;
     res.status(statusCode).render("error.ejs", { err });
 });
 
-// ✅ 9. Use environment PORT for Render
+// Use environment PORT for Render
 const port = process.env.PORT || 10000;
 app.listen(port, () => {
     console.log(`🚀 Server is running on port ${port}`);
