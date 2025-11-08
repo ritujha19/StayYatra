@@ -6,8 +6,6 @@ const setupConfirmationSystem = () => {
 
   // Cancel booking buttons
   const cancelBtns = document.querySelectorAll(".cancel-booking-btn");
-  const cancelOverlay = document.getElementById("confirm-cancel-overlay");
-  const cancelForm = document.getElementById("cancel-booking-form");
 
   // Handle delete buttons
   if (deleteBtns) {
@@ -35,9 +33,11 @@ const setupConfirmationSystem = () => {
         const formAction = form.getAttribute("action");
 
         // Update confirmation form action
+        const cancelForm = document.getElementById("cancel-booking-form");
         cancelForm.setAttribute("action", formAction);
 
         // Show cancel overlay
+        const cancelOverlay = document.getElementById("confirm-cancel-overlay");
         cancelOverlay.style.display = "flex";
         document.body.style.overflow = "hidden";
       });

@@ -78,10 +78,7 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoute);
 app.use("/listing", listingRoute);
 app.use("/listing/:id/review", reviewRoute);
-app.use("/listing/:id/book", (req, res, next) => {
-    res.locals.id = req.params.id; // Pass the ID to res.locals
-    next();
-}, bookingRoute);
+app.use("/booking", bookingRoute);
 app.use("/user", userRoute);
 
 // 404 error handler

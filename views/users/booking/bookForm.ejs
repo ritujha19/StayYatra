@@ -1,0 +1,145 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title mb-4">
+            Book your
+            <span class="samarkan-font text-success-emphasis">Nivaas </span> at
+            <%= listing.title %>
+          </h3>
+
+          <!-- Booking Form -->
+          <form action="/booking/create/<%= listing._id %>" method="POST" id="bookingForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label class="form-label">Check-in Date:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="checkinDate"
+                name="booking[checkin]"
+                placeholder="Select check-in date"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please select check-in date.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Check-out Date:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="checkoutDate"
+                name="booking[checkout]"
+                placeholder="Select check-out date"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please select check-out date.</div>
+            </div>
+
+            <div
+              class="mb-3 d-flex flex-row align-items-center justify-content-center gap-5"
+            >
+              <div class="dropdown mb-3">
+              <button
+                class="btn border border-dark dropdown-toggle"
+                style="width: 200px"
+                type="button"
+                id="guestDropdown"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false"
+              >
+                <i class="fa fa-plus"></i>
+                <span id="guest-selected-label">Add guests</span>
+              </button>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="guestDropdown"
+                style="width: 200px"
+              >
+                <li
+                class="d-flex align-items-center justify-content-between px-3 py-2"
+                >
+                <span>Adults</span>
+                <div>
+                  <button
+                  class="btn btn-sm btn-light minus-btn"
+                  type="button"
+                  data-type="adult"
+                  >
+                  -
+                  </button>
+                  <input type="hidden" name="booking[adults]" id="adult-count-input" value="1">
+                  <span id="adult-count">1</span>
+                  <button
+                  class="btn btn-sm btn-light plus-btn"
+                  type="button"
+                  data-type="adult"
+                  >
+                  +
+                  </button>
+                </div>
+                </li>
+                <li
+                class="d-flex align-items-center justify-content-between px-3 py-2"
+                >
+                <span>Children</span>
+                <div>
+                  <button
+                  class="btn btn-sm btn-light minus-btn"
+                  type="button"
+                  data-type="child"
+                  >
+                  -
+                  </button>
+                  <input type="hidden" name="booking[children]" id="child-count-input" value="0">
+                  <span id="child-count">0</span>
+                  <button
+                  class="btn btn-sm btn-light plus-btn"
+                  type="button"
+                  data-type="child"
+                  >
+                  +
+                  </button>
+                </div>
+                </li>
+              </ul>
+              </div>
+
+              <!-- Price Display -->
+              <div class="alert alert-info p-2">
+              <p class="mb-0">
+                Price per night: ₹<%= listing.price %>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text-muted text-small">includes all fees </span>
+              </p>
+              </div>
+            </div>
+
+            <!-- Add this hidden input for price -->
+            <input 
+                type="hidden" 
+                name="booking[price]" 
+                id="total-price-input" 
+                value="<%= listing.price %>"
+            />
+            <button type="submit" class="btn btn-success w-100 bookButton" >
+              book now
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  id="listing-data"
+  data-price="<%= listing.price %>"
+  style="display: none"
+></div>

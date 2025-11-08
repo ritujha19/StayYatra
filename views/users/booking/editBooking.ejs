@@ -1,4 +1,5 @@
 <% layout("/layouts/boilerplate.ejs") %>
+<% layout("/layouts/boilerplate.ejs") %>
 
 <div class="container mt-5">
   <div class="row justify-content-center">
@@ -6,13 +7,12 @@
       <div class="card shadow-sm">
         <div class="card-body">
           <h3 class="card-title mb-4">
-            Book your
-            <span class="samarkan-font text-success-emphasis">Nivaas </span> at
-            <%= listing.title %>
+            Edit your booking for 
+            <%= booking.listing.title %>
           </h3>
 
           <!-- Booking Form -->
-          <form action="/listing/<%= listing._id %>/book" method="POST" id="bookingForm" class="needs-validation" novalidate>
+          <form action="/booking/<%= booking._id %>/edit?_method=PUT" method="POST" id="bookingForm" class="needs-validation" novalidate>
             <div class="mb-3">
               <label class="form-label">Check-in Date:</label>
               <input
@@ -22,6 +22,7 @@
                 name="booking[checkin]"
                 placeholder="Select check-in date"
                 required
+                value="<%= booking.checkin %>"
               />
               <div class="valid-feedback">Looks good!</div>
             <div class="invalid-feedback">Please select check-in date.</div>
@@ -36,6 +37,7 @@
                 name="booking[checkout]"
                 placeholder="Select check-out date"
                 required
+                value="<%= booking.checkout %>"
               />
               <div class="valid-feedback">Looks good!</div>
             <div class="invalid-feedback">Please select check-out date.</div>
@@ -55,7 +57,9 @@
                 aria-expanded="false"
               >
                 <i class="fa fa-plus"></i>
-                <span id="guest-selected-label">Add guests</span>
+                <span id="guest-selected-label">
+                    <%= (booking.adults || 0) + (booking.children || 0) %> guests
+                </span>
               </button>
               <ul
                 class="dropdown-menu"
@@ -74,8 +78,8 @@
                   >
                   -
                   </button>
-                  <input type="hidden" name="booking[adults]" id="adult-count-input" value="1">
-                  <span id="adult-count">1</span>
+                  <input type="hidden" name="booking[adults]" id="adult-count-input" value="<%= booking.adults %>">
+                  <span id="adult-count"><%= booking.adults %></span>
                   <button
                   class="btn btn-sm btn-light plus-btn"
                   type="button"
@@ -97,8 +101,8 @@
                   >
                   -
                   </button>
-                  <input type="hidden" name="booking[children]" id="child-count-input" value="0">
-                  <span id="child-count">0</span>
+                  <input type="hidden" name="booking[children]" id="child-count-input" value="<%= booking.children %>">
+                  <span id="child-count"><%= booking.children %></span>
                   <button
                   class="btn btn-sm btn-light plus-btn"
                   type="button"
@@ -114,7 +118,7 @@
               <!-- Price Display -->
               <div class="alert alert-info p-2">
               <p class="mb-0">
-                Price per night: ₹<%= listing.price %>
+               Total Price: ₹<%= booking.price %>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="text-muted text-small">includes all fees </span>
               </p>
@@ -122,14 +126,14 @@
             </div>
 
             <!-- Add this hidden input for price -->
-            <input 
+            <!-- <input 
                 type="hidden" 
                 name="booking[price]" 
                 id="total-price-input" 
                 value="<%= listing.price %>"
-            />
-            <button type="submit" class="btn btn-success w-100 bookButton" >
-              book now
+            /> -->
+            <button type="submit" class="btn btn-outline-danger w-100 editBookingBtn" >
+              Update Your Booking
             </button>
           </form>
         </div>

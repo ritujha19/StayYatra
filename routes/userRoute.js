@@ -83,7 +83,7 @@ router.get("/my-reviews", isLoggedIn, wrapAsync(async (req, res) => {
   }
 }));
 
-router.get("/mybookedNivaas", isLoggedIn, wrapAsync(async (req, res) => {
+router.get("/mybookings", isLoggedIn, wrapAsync(async (req, res) => {
     const user = await User.findById(req.user._id)
         .populate({
             path: 'userBooking',
@@ -92,7 +92,7 @@ router.get("/mybookedNivaas", isLoggedIn, wrapAsync(async (req, res) => {
                 select: 'title price location image'
             }
         });
-    res.render("users/myBookedNivaas", { 
+    res.render("users/booking/myBookedNivaas", { 
         user,
         userBooking: user.userBooking.map(booking => booking.listing)
     });
