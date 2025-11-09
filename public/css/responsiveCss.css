@@ -1,0 +1,83 @@
+/* Show page responsive styles */
+.show-container {
+  padding: 2rem 1rem;
+}
+
+.show-card {
+  width: 100% !important;
+  margin-bottom: 1rem;
+}
+
+.show-img {
+  height: 300px !important;
+  object-fit: cover;
+}
+
+.review-card {
+  width: 100% !important;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .show-container,
+  .reviews-container,
+  .all-reviews-container {
+    padding: 1rem;
+  }
+
+  .show-img {
+    height: 200px !important;
+    padding: 0.5rem !important;
+  }
+
+  .container-review {
+    max-width: 100% !important;
+    margin: 1rem auto !important;
+    padding: 0 1rem;
+  }
+
+  .reviews-card {
+    margin-left: 0 !important;
+  }
+
+  .offset-2,
+  .offset-3,
+  .offset-4 {
+    margin-left: 0 !important;
+  }
+
+  .col-8 {
+    width: 100% !important;
+  }
+
+  .review-card {
+    margin-bottom: 1rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .show-img {
+    height: 150px !important;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .booking-btn-container {
+    padding: 0 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}

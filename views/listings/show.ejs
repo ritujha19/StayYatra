@@ -1,87 +1,106 @@
 <% layout("/layouts/boilerplate.ejs") %>
-  <div class="container-show col-8 offset-4 mb-5" data-aos="fade-up">
-    <div class="card show-card" style="width: 25rem">
-      <h4 class="card-title mb-3">
-        <%= listing.title %>
-      </h4>
-      <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing image"
-        style="height: 200px; object-fit: cover" />
-      <div class="card-body">
-        <p class="card-text">
-          <%= listing.description %>
-        </p>
-        <p class="card-text">
-          Price: &#8377; <%= listing.price.toLocaleString("en-IN") %>
-        </p>
-        <p class="card-text">Location: <%= listing.location %>
-        </p>
-        <p class="card-text">
-          <strong>What we provide:</strong>
-        <ul class="list-group mt-2">
-          <% if (listing.addons && listing.addons.length> 0) { %>
-            <% listing.addons.forEach(addon=> { %>
-              <li class="list-group-item">
-                <i class="fas fa-check text-success me-2"></i>
-                <%= addon %>
-              </li>
-              <% }); %>
+<div class="container show-container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card show-card">
+        <h4 class="card-title mb-3">
+          <%= listing.title %>
+        </h4>
+        <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing image"/>
+        <div class="card-body">
+          <p class="card-text">
+            <%= listing.description %>
+          </p>
+          <p class="card-text">
+            Price: &#8377; <%= listing.price.toLocaleString("en-IN") %>
+          </p>
+          <p class="card-text">Location: <%= listing.location %>
+          </p>
+          <p class="card-text">
+            <strong>What we provide:</strong>
+          <ul class="list-group mt-2">
+            <% if (listing.addons && listing.addons.length> 0) { %>
+              <% listing.addons.forEach(addon=> { %>
+                <li class="list-group-item">
+                  <i class="fas fa-check text-success me-2"></i>
+                  <%= addon %>
+                </li>
+                <% }); %>
                 <% } else { %>
                   <li class="list-group-item">No amenities listed</li>
                   <% } %>
-        </ul>
-        </p>
+          </ul>
+          </p>
+        </div>
+      </div>
+      
+      <div class="booking-btn-container text-center my-4">
+        <a href="/booking/create/<%= listing._id %>" class="btn btn-outline-danger bg-danger-subtle text-danger-emphasis">
+          <i class="fas fa-calendar-check me-1"></i>Book Now
+        </a>
       </div>
     </div>
-    <!-- Add Book Button -->
-    <a href="/booking/create/<%= listing._id %>" class="btn btn-outline-danger bg-danger-subtle  text-danger-emphasis">
-      <i class="fas fa-calendar-check me-1"></i>Book Now
-    </a>
   </div>
-  <hr />
-  <!-- create form for reviews -->
-  <div class="container-review mt-5 col-8 offset-3">
-    <h4>Leave A Review</h4>
-    <br /><br />
-    <form action="/listing/<%= listing._id %>/review" method="post" novalidate class="needs-validation">
-      <div class="mb-3">
-        <label for="rating" class="form-label">Rating</label>
-        <input type="range" class="form-range" id="rating" name="review[rating]" min="1" max="5" step="1" value="3" />
-      </div>
-      <div class="mb-3">
-        <label for="comment" class="form-label">Comment</label>
-        <textarea class="form-control border-dark" id="comment" name="review[comment]" cols="3" rows="3"
-          placeholder="write something about place" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-outline-primary">Submit Review</button>
-    </form>
-  </div>
+</div>
 
-  <hr />
-  <h4 class="offset-3">All Reviews</h4>
-  <% if (listing.reviews.length===0) { %>
-    <p>No reviews yet.</p>
-    <% } else { %>
-      <div class="row offset-2">
-        <% for(let review of listing.reviews) { %>
-          <div class="reviews-card mb-1 col-5 ms-5">
-            <div class="card review-card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <% if (review.author) { %>
-                    <%= review.author.username %>
-                      <% } else { %> Unknown user <% } %>
-                </h5>
-                <p class="card-text">
-                  <%= review.rating %>
+<hr />
+
+<!-- Reviews Section -->
+<div class="container reviews-container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <h4 class="mb-4">Leave A Review</h4>
+      <br /><br />
+      <form action="/listing/<%= listing._id %>/review" method="post" novalidate class="needs-validation">
+        <div class="mb-3">
+          <label for="rating" class="form-label">Rating</label>
+          <input type="range" class="form-range" id="rating" name="review[rating]" min="1" max="5" step="1" value="3" />
+        </div>
+        <div class="mb-3">
+          <label for="comment" class="form-label">Comment</label>
+          <textarea class="form-control border-dark" id="comment" name="review[comment]" cols="3" rows="3"
+            placeholder="write something about place" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Submit Review</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<!-- All Reviews Section -->
+<div class="container all-reviews-container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <h4 class="mb-4">All Reviews</h4>
+      <% if (listing.reviews.length === 0) { %>
+        <p>No reviews yet.</p>
+      <% } else { %>
+        <div class="row g-4">
+          <% for(let review of listing.reviews) { %>
+            <div class="col-md-6">
+              <div class="card review-card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <% if (review.author) { %>
+                      <%= review.author.username %>
+                    <% } else { %> Unknown user <% } %>
+                  </h5>
+                  <p class="card-text">
+                    <%= review.rating %>
                     <% for(let i=1; i <=review.rating; i++) { %>
                       ⭐ <% } %>
-                </p>
-                <p class="card-text">
-                  <%= review.comment %>
-                </p>
+                  </p>
+                  <p class="card-text">
+                    <%= review.comment %>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
           <% } %>
-      </div>
+        </div>
       <% } %>
+    </div>
+  </div>
+</div>
