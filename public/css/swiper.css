@@ -54,6 +54,14 @@
     justify-content: center;
   }
 
+   .show-img {
+    height: 150px !important;
+  }
+
+  .container{
+    padding: 1rem !important;
+  }
+
   .f-info {
     flex-direction: column;
     align-items: flex-start;

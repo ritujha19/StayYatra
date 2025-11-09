@@ -144,6 +144,27 @@ body {
   padding: 15px !important;
   border-radius: 30px !important;
 }
+@media (max-width: 576px)  {
+ 
+}
+.show-container {
+  padding: 2rem 1rem;
+}
+
+.show-card {
+  width: 100% !important;
+  margin-bottom: 1rem;
+}
+
+.show-img {
+  height: 300px !important;
+  object-fit: cover;
+}
+
+.review-card {
+  width: 100% !important;
+}
+
 
 /* Centered overlay and blur effect */
 .confirm-overlay {
