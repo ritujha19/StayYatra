@@ -1,16 +1,24 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<h1 class="mb-4" data-aos="fade-right">Our <span class="samarkan-font text-danger-emphasis" id="Nivaas">Nivaas</span></h1>
+<h1 class="mb-4" data-aos="fade-right">
+  Our <span class="samarkan-font text-danger-emphasis" id="Nivaas">Nivaas</span>
+</h1>
 <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">
-    <% for (let listing of allListings) { %>
-        <a href="/listing/<%= listing._id %>/show" class="text-decoration-none">
-            <div class="card col" data-aos="fade-up">
-                <img src="<%= listing.image %>" class="card-img-top" alt="listing_image">
-                <div class="card-img-overlay"></div>
-                <div class="card-body">
-                <p class="card-heading"><b><%= listing.title %></b></p>
-                <p class="card-text">&#8377;<%= listing.price.toLocaleString("en-IN") %>/Night</p>
-                </div>
-            </div>
-        </a>
-    <% } %>
+  <% for (let listing of allListings) { %>
+  <a href="/listing/<%= listing._id %>/show" class="text-decoration-none">
+    <div class="card col" data-aos="fade-up">
+      <img
+        src="<%= listing.image %>"
+        class="card-img-top"
+        alt="listing_image"
+      />
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <p class="card-heading"><b><%= listing.title %></b></p>
+        <p class="card-text">
+          &#8377;<%= listing.price.toLocaleString("en-IN") %>/Night
+        </p>
+      </div>
+    </div>
+  </a>
+  <% } %>
 </div>

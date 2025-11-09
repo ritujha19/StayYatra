@@ -76,17 +76,17 @@
     <div class="mb-4">
       <label for="addon">Add Amenities:</label>
       <div class="add-on-list mt-3">
-      <div class="add-input col-md-11">
-        <input
-          type="text"
-          id="add-on1"
-          name="listing[addons][]"
-          class="form-control border-dark-subtle mb-3"
-          placeholder="e.g., Breakfast included, Airport pickup"
-        />
+        <div class="add-input col-md-11">
+          <input
+            type="text"
+            id="add-on1"
+            name="listing[addons][]"
+            class="form-control border-dark-subtle mb-3"
+            placeholder="e.g., Breakfast included, Airport pickup"
+          />
         </div>
         <div class="valid-feedback">Looks good!</div>
-        <div  id="newInputContainer"></div>
+        <div id="newInputContainer"></div>
       </div>
       <button
         class="btn btn-info-subtle mt-3 border border-info-subtle"
@@ -113,7 +113,8 @@
     newInput.className = "form-control border-dark-subtle ";
     newInput.placeholder = "e.g., Breakfast included, Airport pickup";
     const closeButton = document.createElement("div");
-    closeButton.innerHTML = '<button class="btn"><i class="fa-solid fa-xmark"></i></button>';
+    closeButton.innerHTML =
+      '<button class="btn"><i class="fa-solid fa-xmark"></i></button>';
     closeButton.className = "col-md-1 ";
     newInputDiv.appendChild(newInput);
     container.appendChild(newInputDiv);
