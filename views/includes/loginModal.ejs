@@ -1,81 +1,103 @@
 <!-- ✅ LOGIN MODAL with proper Bootstrap 5 attributes -->
-<div class="modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">
-                    <i class="fas fa-sign-in-alt me-2"></i>Sign In
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div
+  class="modal"
+  id="loginModal"
+  tabindex="-1"
+  aria-labelledby="loginModalLabel"
+  aria-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">
+          <i class="fas fa-sign-in-alt me-2"></i>Sign In
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <!-- Flash Messages -->
+        <% if (typeof loginError !== 'undefined' && loginError &&
+        loginError.length > 0) { %>
+        <div class="alert alert-danger"><%= loginError[0] %></div>
+        <% } %>
+
+        <!-- Login Form -->
+        <form
+          action="/auth/login"
+          method="POST"
+          novalidate
+          class="needs-validation"
+        >
+          <div class="mb-3">
+            <label for="username" class="form-label">
+              <i class="fas fa-user me-1"></i>Username:
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              pattern="^[^\s]{3,20}$"
+              required
+              placeholder="Enter your username"
+            />
+            <div class="valid-feedback">
+              <i class="fas fa-check text-success"></i> Looks good!
             </div>
-            
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <!-- Flash Messages -->                
-                <% if (typeof loginError !== 'undefined' && loginError && loginError.length > 0) { %>
-                    <div class="alert alert-danger"><%= loginError[0] %></div>
-                <% } %>
-                
-                <!-- Login Form -->
-                <form action="/auth/login" method="POST" novalidate class="needs-validation">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">
-                            <i class="fas fa-user me-1"></i>Username:
-                        </label>
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            id="username" 
-                            name="username" 
-                            pattern="^[^\s]{3,20}$" 
-                            required
-                            placeholder="Enter your username">
-                        <div class="valid-feedback">
-                            <i class="fas fa-check text-success"></i> Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Username must be 3–20 characters with no spaces.
-                        </div>
-                    </div>
-                    
-                    <div class="input-group mb-3">
-                        <input 
-                            type="password" 
-                            class="form-control password-input" 
-                            id="password"
-                            name="password"
-                            placeholder="Enter the password"
-                            required
-                        >
-                        <button 
-                            class="btn btn-outline-secondary togglePassword" 
-                            type="button"
-                            aria-label="Toggle password visibility"
-                        >
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                    <div class="valid-feedback">
-                        <i class="fas fa-check text-success"></i> Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Password must be 8 to 12 characters long.
-                    </div>
-                    <div class="mb-3 mt-1">
-                        <a href="#" id="openForgotPasswordModal">Forget password?</a>
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-sign-in-alt me-2"></i>Login
-                        </button>
-                    </div>
-                    <div class="text-center mt-3">
-                        <span class="text-muted">New here?</span>
-                        <a href="#" id="openRegisterFromLogin" class="text-decoration-none">Create an account</a>
-                    </div>
-                </form>
+            <div class="invalid-feedback">
+              Username must be 3–20 characters with no spaces.
             </div>
-        </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input
+              type="password"
+              class="form-control password-input"
+              id="password"
+              name="password"
+              placeholder="Enter the password"
+              required
+            />
+            <button
+              class="btn btn-outline-secondary togglePassword"
+              type="button"
+              aria-label="Toggle password visibility"
+            >
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <div class="valid-feedback">
+            <i class="fas fa-check text-success"></i> Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Password must be 8 to 12 characters long.
+          </div>
+          <div class="mb-3 mt-1">
+            <a href="#" id="openForgotPasswordModal">Forget password?</a>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-sign-in-alt me-2"></i>Login
+            </button>
+          </div>
+          <div class="text-center mt-3">
+            <span class="text-muted">New here?</span>
+            <a href="#" id="openRegisterFromLogin" class="text-decoration-none"
+              >Create an account</a
+            >
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

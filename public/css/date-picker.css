@@ -2,24 +2,23 @@
 .datepicker-picker {
   border: 1px solid #343a40;
   border-radius: 30px !important;
-  border:2px solid rgb(255, 157, 122) ;
+  border: 2px solid rgb(255, 157, 122);
   padding: 5px;
   height: fit-content;
   font-size: large;
-    font-weight: 400;
-    font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-family: "Times New Roman", Times, serif;
 }
-
 
 /* Header buttons (next, previous, month) */
-.datepicker-controls button{
-    border-radius: 10px !important;
-    background-color: white !important;
-    border: none;
-    margin-bottom:5px ;
+.datepicker-controls button {
+  border-radius: 10px !important;
+  background-color: white !important;
+  border: none;
+  margin-bottom: 5px;
 }
-.datepicker-controls .view-switch{
-    border-radius: 0 !important;
+.datepicker-controls .view-switch {
+  border-radius: 0 !important;
 }
 /* Selected date color */
 .datepicker-cell.selected,
@@ -40,15 +39,15 @@
   background-color: #747478 !important;
   color: #fff !important;
 }
-.days-of-week{
-   font-size: medium !important;
-   font-weight: 400 !important;
-   color: #747478 !important;
-   font-family:'Times New Roman', Times, serif;
+.days-of-week {
+  font-size: medium !important;
+  font-weight: 400 !important;
+  color: #747478 !important;
+  font-family: "Times New Roman", Times, serif;
 }
-.datepicker-cell{
-    font-size: medium;
-    height: 2rem !important;
+.datepicker-cell {
+  font-size: medium;
+  height: 2rem !important;
 }
 
 .datepicker-controls .btn:hover {

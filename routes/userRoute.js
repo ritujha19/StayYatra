@@ -65,36 +65,42 @@ router.get(
   })
 );
 
-
-router.get("/my-reviews", isLoggedIn, wrapAsync(async (req, res) => {
-  try {
-    // Find all reviews by this user
-    const user = await User.findById(req.user._id)
-      .populate({
-        path: "userReview",
-        populate: { path: "listing" },
-      })
-      .sort({ createdAt: -1 });
-
-    res.render("users/myReviews.ejs", { user });
-  } catch (error) {
-    console.log(error);
-    res.render("users/myReviews", { user: [] });
-  }
-}));
-
-router.get("/mybookings", isLoggedIn, wrapAsync(async (req, res) => {
-    const user = await User.findById(req.user._id)
+router.get(
+  "/my-reviews",
+  isLoggedIn,
+  wrapAsync(async (req, res) => {
+    try {
+      // Find all reviews by this user
+      const user = await User.findById(req.user._id)
         .populate({
-            path: 'userBooking',
-            populate: {
-                path: 'listing',
-                select: 'title price location image'
-            }
-        });
-    res.render("users/booking/myBookedNivaas", { 
-        user,
-        userBooking: user.userBooking.map(booking => booking.listing)
+          path: "userReview",
+          populate: { path: "listing" },
+        })
+        .sort({ createdAt: -1 });
+
+      res.render("users/myReviews.ejs", { user });
+    } catch (error) {
+      console.log(error);
+      res.render("users/myReviews", { user: [] });
+    }
+  })
+);
+
+router.get(
+  "/mybookings",
+  isLoggedIn,
+  wrapAsync(async (req, res) => {
+    const user = await User.findById(req.user._id).populate({
+      path: "userBooking",
+      populate: {
+        path: "listing",
+        select: "title price location image",
+      },
     });
-}))
+    res.render("users/booking/myBookedNivaas", {
+      user,
+      userBooking: user.userBooking.map((booking) => booking.listing),
+    });
+  })
+);
 module.exports = router;

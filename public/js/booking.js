@@ -40,11 +40,14 @@ document.addEventListener("DOMContentLoaded", function () {
       checkoutPicker.setOptions({
         minDate: minCheckout,
         maxDate: maxCheckout,
-      });      
+      });
 
       // Clear checkout date if out of range
       const checkoutDate = checkoutPicker.getDate();
-      if (checkoutDate && (checkoutDate < minCheckout || checkoutDate > maxCheckout)) {
+      if (
+        checkoutDate &&
+        (checkoutDate < minCheckout || checkoutDate > maxCheckout)
+      ) {
         checkoutElem.value = "";
       }
     }
@@ -61,29 +64,31 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateTotalPrice() {
     const priceDisplay = document.querySelector(".alert-info p.mb-0");
     const totalPriceInput = document.getElementById("total-price-input");
-    
+
     if (!priceDisplay || !totalPriceInput) return;
 
     const checkinStr = checkinElem.value;
     const checkoutStr = checkoutElem.value;
 
     if (checkinStr && checkoutStr) {
-        const [cd, cm, cy] = checkinStr.split("-");
-        const [cod, com, coy] = checkoutStr.split("-");
-        const checkinDate = new Date(`${cy}-${cm}-${cd}`);
-        const checkoutDate = new Date(`${coy}-${com}-${cod}`);
+      const [cd, cm, cy] = checkinStr.split("-");
+      const [cod, com, coy] = checkoutStr.split("-");
+      const checkinDate = new Date(`${cy}-${cm}-${cd}`);
+      const checkoutDate = new Date(`${coy}-${com}-${cod}`);
 
-        const nights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
-        if (nights > 0) {
-            const totalPrice = nights * pricePerNight;
-            totalPriceInput.value = totalPrice; // Update hidden input
-            priceDisplay.innerHTML = `
+      const nights = Math.ceil(
+        (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24)
+      );
+      if (nights > 0) {
+        const totalPrice = nights * pricePerNight;
+        totalPriceInput.value = totalPrice; // Update hidden input
+        priceDisplay.innerHTML = `
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="text-success fw-bold">Total for ${nights} nights: ₹${totalPrice}</span>
                 <span class="text-muted text-small d-block">includes all fees</span>
             `;
-            return;
-        }
+        return;
+      }
     }
 
     // Reset if no valid date range
@@ -97,8 +102,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- GUEST SELECTION ---
   function updateGuestLabel() {
-    const adults = parseInt(document.getElementById("adult-count").textContent, 10);
-    const children = parseInt(document.getElementById("child-count").textContent, 10);
+    const adults = parseInt(
+      document.getElementById("adult-count").textContent,
+      10
+    );
+    const children = parseInt(
+      document.getElementById("child-count").textContent,
+      10
+    );
     let label = "Add guests";
     if (adults + children > 0) {
       label = `${adults + children} guest${adults + children > 1 ? "s" : ""}`;
@@ -109,34 +120,34 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update the guest counter functions
   document.querySelectorAll(".plus-btn").forEach((btn) => {
     btn.addEventListener("click", function () {
-        const type = this.getAttribute("data-type");
-        const countSpan = document.getElementById(type + "-count");
-        const hiddenInput = document.getElementById(type + "-count-input");
-        const newValue = parseInt(countSpan.textContent, 10) + 1;
-        
-        countSpan.textContent = newValue;
-        hiddenInput.value = newValue; // Update hidden input
-        updateGuestLabel();
+      const type = this.getAttribute("data-type");
+      const countSpan = document.getElementById(type + "-count");
+      const hiddenInput = document.getElementById(type + "-count-input");
+      const newValue = parseInt(countSpan.textContent, 10) + 1;
+
+      countSpan.textContent = newValue;
+      hiddenInput.value = newValue; // Update hidden input
+      updateGuestLabel();
     });
-});
+  });
 
   document.querySelectorAll(".minus-btn").forEach((btn) => {
     btn.addEventListener("click", function () {
-        const type = this.getAttribute("data-type");
-        const countSpan = document.getElementById(type + "-count");
-        const hiddenInput = document.getElementById(type + "-count-input");
-        let current = parseInt(countSpan.textContent, 10);
-        
-        if (type === "adult" && current > 1) {
-            countSpan.textContent = current - 1;
-            hiddenInput.value = current - 1; // Update hidden input
-        } else if (type === "child" && current > 0) {
-            countSpan.textContent = current - 1;
-            hiddenInput.value = current - 1; // Update hidden input
-        }
-        updateGuestLabel();
+      const type = this.getAttribute("data-type");
+      const countSpan = document.getElementById(type + "-count");
+      const hiddenInput = document.getElementById(type + "-count-input");
+      let current = parseInt(countSpan.textContent, 10);
+
+      if (type === "adult" && current > 1) {
+        countSpan.textContent = current - 1;
+        hiddenInput.value = current - 1; // Update hidden input
+      } else if (type === "child" && current > 0) {
+        countSpan.textContent = current - 1;
+        hiddenInput.value = current - 1; // Update hidden input
+      }
+      updateGuestLabel();
     });
-});
+  });
 
   // Initialize labels and prices
   updateGuestLabel();
@@ -155,8 +166,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const checkInDate = checkinElem.value;
     const checkOutDate = checkoutElem.value;
-    const adults = parseInt(document.getElementById("adult-count").textContent, 10);
-    const children = parseInt(document.getElementById("child-count").textContent, 10);
+    const adults = parseInt(
+      document.getElementById("adult-count").textContent,
+      10
+    );
+    const children = parseInt(
+      document.getElementById("child-count").textContent,
+      10
+    );
 
     const priceDisplay = document.querySelector(".alert-info p.mb-0");
     const totalPrice =

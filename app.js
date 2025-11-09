@@ -80,6 +80,7 @@ app.use("/listing", listingRoute);
 app.use("/listing/:id/review", reviewRoute);
 app.use("/booking", bookingRoute);
 app.use("/user", userRoute);
+app.use("/links", require("./routes/linksRoute.js"));
 
 // 404 error handler
 app.all("/{*any}", (req, res, next) => {

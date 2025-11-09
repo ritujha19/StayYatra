@@ -1,112 +1,148 @@
 <!-- ✅ REGISTER MODAL with proper Bootstrap 5 attributes - includes/registerModal.ejs -->
-<div class="modal" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h5 class="modal-title" id="registerModalLabel">
-                    <i class="fas fa-user-plus me-2"></i>Create Account
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <!-- Flash Messages -->
-                <% if (typeof success !== 'undefined' && success && success.length > 0) { %>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <i class="fas fa-check-circle me-2"></i><%= success %>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <% } %>
-                
-                <% if (typeof error !== 'undefined' && error && error.length > 0) { %>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fas fa-exclamation-circle me-2"></i><%= error %>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <% } %>
-                
-                <!-- Register Form -->
-                <form action="/auth/register" method="POST" novalidate class="needs-validation">
-                    <div class="mb-3">
-                        <label for="registerUsername" class="form-label">
-                            <i class="fas fa-user me-1"></i>Username:
-                        </label>
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            id="registerUsername" 
-                            name="username" 
-                            pattern="^[^\s]{3,20}$" 
-                            required
-                            placeholder="Enter your username">
-                        <div class="valid-feedback">
-                            <i class="fas fa-check text-success"></i> Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Username must be 3–20 characters with no spaces.
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="registerEmail" class="form-label">
-                            <i class="fas fa-envelope me-1"></i>Email:
-                        </label>
-                        <input 
-                            type="email" 
-                            class="form-control" 
-                            id="registerEmail" 
-                            name="email" 
-                            required
-                            placeholder="Enter your email">
-                        <div class="valid-feedback">
-                             Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Please provide a valid email.
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="registerPassword" class="form-label">
-                            <i class="fas fa-lock me-1"></i>Password:
-                        </label>
-                        <div class="input-group">
-                            <input 
-                                type="password" 
-                                id="registerPassword"
-                                name="password" 
-                                class="form-control password-input" 
-                                pattern="^.{8,12}$" 
-                                required
-                                placeholder="Enter your password">
-                            <button class="btn btn-outline-secondary togglePassword" type="button">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                        <div class="valid-feedback">
-                            <i class="fas fa-check text-success"></i> Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Password must be 8 to 12 characters long.
-                        </div>
-                    </div>
-                    
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-user-plus me-2"></i>Create Account
-                        </button>
-                    </div>
-                    
-                    <div class="text-center mt-3">
-                        <span class="text-muted">Already have an account? </span>
-                        <a href="#" id="openLoginFromRegister" class="text-decoration-none">
-                            Sign in here
-                        </a>
-                    </div>
-                </form>
-            </div>
+<div
+  class="modal"
+  id="registerModal"
+  tabindex="-1"
+  aria-labelledby="registerModalLabel"
+  aria-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">
+          <i class="fas fa-user-plus me-2"></i>Create Account
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <!-- Flash Messages -->
+        <% if (typeof success !== 'undefined' && success && success.length > 0)
+        { %>
+        <div
+          class="alert alert-success alert-dismissible fade show"
+          role="alert"
+        >
+          <i class="fas fa-check-circle me-2"></i><%= success %>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
         </div>
+        <% } %> <% if (typeof error !== 'undefined' && error && error.length >
+        0) { %>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
+          <i class="fas fa-exclamation-circle me-2"></i><%= error %>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+        <% } %>
+
+        <!-- Register Form -->
+        <form
+          action="/auth/register"
+          method="POST"
+          novalidate
+          class="needs-validation"
+        >
+          <div class="mb-3">
+            <label for="registerUsername" class="form-label">
+              <i class="fas fa-user me-1"></i>Username:
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="registerUsername"
+              name="username"
+              pattern="^[^\s]{3,20}$"
+              required
+              placeholder="Enter your username"
+            />
+            <div class="valid-feedback">
+              <i class="fas fa-check text-success"></i> Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Username must be 3–20 characters with no spaces.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label">
+              <i class="fas fa-envelope me-1"></i>Email:
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              id="registerEmail"
+              name="email"
+              required
+              placeholder="Enter your email"
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a valid email.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label">
+              <i class="fas fa-lock me-1"></i>Password:
+            </label>
+            <div class="input-group">
+              <input
+                type="password"
+                id="registerPassword"
+                name="password"
+                class="form-control password-input"
+                pattern="^.{8,12}$"
+                required
+                placeholder="Enter your password"
+              />
+              <button
+                class="btn btn-outline-secondary togglePassword"
+                type="button"
+              >
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <div class="valid-feedback">
+              <i class="fas fa-check text-success"></i> Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Password must be 8 to 12 characters long.
+            </div>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success">
+              <i class="fas fa-user-plus me-2"></i>Create Account
+            </button>
+          </div>
+
+          <div class="text-center mt-3">
+            <span class="text-muted">Already have an account? </span>
+            <a href="#" id="openLoginFromRegister" class="text-decoration-none">
+              Sign in here
+            </a>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

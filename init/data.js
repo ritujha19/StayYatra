@@ -479,7 +479,8 @@ const listings = [
     title: "Shillong Cozy Homestay",
     description:
       "Warm homestay in the hills of Shillong with homemade meals and a beautiful garden.",
-    image: "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/ec4bd726-ddbd-5a17-ac3f-63279bafead0/7cf24867-08c1-5cd1-9e59-d7b5266921ad.jpg",
+    image:
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/ec4bd726-ddbd-5a17-ac3f-63279bafead0/7cf24867-08c1-5cd1-9e59-d7b5266921ad.jpg",
     price: 1100,
     location: "Shillong, Meghalaya",
     addons: [
@@ -511,7 +512,8 @@ const listings = [
     title: "Auroville Earth House",
     description:
       "Sustainable earth houses with meditation space and access to community activities.",
-    image: "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/b658d251-cc42-5ec4-b548-b741e18d8f5e/fa55c4ed-f287-5630-965d-680e1d3dcc52.jpg",
+    image:
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/b658d251-cc42-5ec4-b548-b741e18d8f5e/fa55c4ed-f287-5630-965d-680e1d3dcc52.jpg",
     price: 900,
     location: "Auroville, Tamil Nadu",
     addons: [
@@ -527,7 +529,8 @@ const listings = [
     title: "Hampi Heritage Guest House",
     description:
       "Stay among Hampi’s ancient ruins, stone courtyards, and vibrant local life.",
-    image: "https://media.assettype.com/outlooktraveller%2F2025-08-02%2Fzelzu0f3%2FEvolve-Back-Hampi-Kamalapura-Palace.jpeg?w=480&auto=format%2Ccompress&fit=max",
+    image:
+      "https://media.assettype.com/outlooktraveller%2F2025-08-02%2Fzelzu0f3%2FEvolve-Back-Hampi-Kamalapura-Palace.jpeg?w=480&auto=format%2Ccompress&fit=max",
     price: 950,
     location: "Hampi, Karnataka",
     addons: [
@@ -575,7 +578,8 @@ const listings = [
     title: "Gokarna Beach Tent",
     description:
       "Simple beach tent steps from the Arabian Sea, great for surfers and solo travelers.",
-    image: "https://campmonk.s3.ap-south-1.amazonaws.com/user/19a4a711-95a7-495f-98db-adbba2c2c435.webp",
+    image:
+      "https://campmonk.s3.ap-south-1.amazonaws.com/user/19a4a711-95a7-495f-98db-adbba2c2c435.webp",
     price: 700,
     location: "Gokarna, Karnataka",
     addons: [
@@ -591,7 +595,8 @@ const listings = [
     title: "Udaipur Homestay",
     description:
       "Family-run budget homestay near Lake Pichola, walkable to city sights.",
-    image: "https://st.perplexity.ai/estatic/0123e9b222f2dfb3635134e625f17c27a77de4c677b5d0e565c515c919925208b5228ead92e24db55cc20725eee3f49c906ac042fbce6723a60127fad7d5d6bdc55b4d8e20505e3bddcd2ddb160104c6c0dff23b00833e8efe2e259e89c60489",
+    image:
+      "https://st.perplexity.ai/estatic/0123e9b222f2dfb3635134e625f17c27a77de4c677b5d0e565c515c919925208b5228ead92e24db55cc20725eee3f49c906ac042fbce6723a60127fad7d5d6bdc55b4d8e20505e3bddcd2ddb160104c6c0dff23b00833e8efe2e259e89c60489",
     price: 950,
     location: "Udaipur, Rajasthan",
     addons: [
@@ -607,7 +612,8 @@ const listings = [
     title: "Pune Youth Hostel",
     description:
       "Central hostel for students and backpackers, with workstations and games.",
-    image: "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/0a8542e2-6ba9-5370-aced-38fa1820e306/06fedfb4-f47f-52e4-8664-a009b465513b.jpg",
+    image:
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/0a8542e2-6ba9-5370-aced-38fa1820e306/06fedfb4-f47f-52e4-8664-a009b465513b.jpg",
     price: 600,
     location: "Shivaji Nagar, Pune",
     addons: [
@@ -639,7 +645,8 @@ const listings = [
     title: "Darjeeling Tea Estate Hostel",
     description:
       "Backpackers’ hostel surrounded by tea gardens and mountain air.",
-    image: "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/6b7b7652-f4fc-5743-ab6a-7c543f07837b/30a33c1c-655c-58f2-a983-d4fcd217ebb2.jpg",
+    image:
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/6b7b7652-f4fc-5743-ab6a-7c543f07837b/30a33c1c-655c-58f2-a983-d4fcd217ebb2.jpg",
     price: 1200,
     location: "Darjeeling, West Bengal",
     addons: [
@@ -655,7 +662,8 @@ const listings = [
     title: "Ajmer Dargah Budget Lodge",
     description:
       "Simple lodge near the Ajmer Sharif Dargah, welcoming pilgrims and tourists.",
-    image: "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/f223457a-a015-55ff-99e1-49d15ff511b9/d5198ba8-18d1-5648-9cb9-6f53481f6145.jpg",
+    image:
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/f223457a-a015-55ff-99e1-49d15ff511b9/d5198ba8-18d1-5648-9cb9-6f53481f6145.jpg",
     price: 700,
     location: "Ajmer, Rajasthan",
     addons: [
@@ -671,7 +679,8 @@ const listings = [
     title: "Bandipur Forest Camp",
     description:
       "Wildlife camp near Bandipur Tiger Reserve, with guided safaris and bonfires.",
-    image: "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/7684db7e-86a5-5247-bc98-614ffe6968c8/f6cdf92b-9724-50b7-bca3-3075a9c3fa17.jpg",
+    image:
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/7684db7e-86a5-5247-bc98-614ffe6968c8/f6cdf92b-9724-50b7-bca3-3075a9c3fa17.jpg",
     price: 1300,
     location: "Bandipur, Karnataka",
     addons: [
@@ -687,7 +696,8 @@ const listings = [
     title: "Pushkar Backpacker Hostel",
     description:
       "Boho hostel close to Pushkar Lake and temple, popular with international travelers.",
-    image: "https://q-xx.bstatic.com/xdata/images/hotel/max500/336178881.jpg?k=cdb4ffd82feb5ce85fef5e58a3f4467882e2cfceff4688fa587ac1a32c397d75&o=",
+    image:
+      "https://q-xx.bstatic.com/xdata/images/hotel/max500/336178881.jpg?k=cdb4ffd82feb5ce85fef5e58a3f4467882e2cfceff4688fa587ac1a32c397d75&o=",
     price: 900,
     location: "Pushkar, Rajasthan",
     addons: [
@@ -703,7 +713,8 @@ const listings = [
     title: "Amritsar Golden Stay",
     description:
       "Restful rooms a stroll away from the Golden Temple, perfect for low-budget pilgrims.",
-    image: "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202305181244278121-e746c5766a5411ee9d9f0a58a9feac02.jpg",
+    image:
+      "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202305181244278121-e746c5766a5411ee9d9f0a58a9feac02.jpg",
     price: 800,
     location: "Amritsar, Punjab",
     addons: [
@@ -719,7 +730,8 @@ const listings = [
     title: "Mahabaleshwar Forest Cabin",
     description:
       "Secluded wood cabin in Mahabaleshwar forest, ideal for nature lovers.",
-    image: "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/227b9ddf-030b-50fb-9495-b2a587701878/d2c46b64-cf66-56cc-a744-ec3055efd0c8.jpg",
+    image:
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/227b9ddf-030b-50fb-9495-b2a587701878/d2c46b64-cf66-56cc-a744-ec3055efd0c8.jpg",
     price: 1400,
     location: "Mahabaleshwar, Maharashtra",
     addons: [

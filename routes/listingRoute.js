@@ -4,10 +4,8 @@ const router = express.Router();
 const Listing = require("../models/listing.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 const expressError = require("../utils/expressError.js");
-const { listingSchema} = require("../schema.js");
-const { isLoggedIn, isOwner } = require("../middleware"); 
-
-
+const { listingSchema } = require("../schema.js");
+const { isLoggedIn, isOwner } = require("../middleware");
 
 // Validate req.body.listing
 const validateListing = (req, res, next) => {
@@ -36,13 +34,13 @@ router.get(
     const { id } = req.params;
     const listing = await Listing.findById(id)
       .populate({
-        path: 'reviews',
+        path: "reviews",
         populate: {
-          path: 'author'
-        }
+          path: "author",
+        },
       })
-      .populate('owner')
-      .select('+addons'); // Add this to ensure addons are included
+      .populate("owner")
+      .select("+addons"); // Add this to ensure addons are included
 
     if (!listing) {
       throw new expressError(404, "Listing not found");
@@ -64,7 +62,7 @@ router.post(
   validateListing,
   wrapAsync(async (req, res) => {
     const newListing = new Listing(req.body.listing);
-    newListing.owner = req.user._id; 
+    newListing.owner = req.user._id;
     await newListing.save();
 
     req.user.userListing.push(newListing._id);
@@ -106,7 +104,7 @@ router.put(
 router.delete(
   "/:id",
   isLoggedIn,
- isOwner,
+  isOwner,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
