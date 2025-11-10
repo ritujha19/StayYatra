@@ -6,40 +6,43 @@ const setupConfirmationSystem = () => {
 
   // Cancel booking buttons
   const cancelBtns = document.querySelectorAll(".cancel-booking-btn");
+  const cancelOverlay = document.getElementById("confirm-cancel-overlay");
+  const cancelForm = document.getElementById("cancel-booking-form");
 
   // Handle delete buttons
   if (deleteBtns) {
     deleteBtns.forEach((btn) => {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
+        e.stopPropagation();
         const form = btn.closest("form");
         const formAction = form.getAttribute("action");
 
         // Update confirmation form action
-        deleteForm.setAttribute("action", formAction);
-
-        // Show delete overlay
-        deleteOverlay.style.display = "flex";
-        document.body.style.overflow = "hidden";
+        if (deleteForm && formAction) {
+          deleteForm.setAttribute("action", formAction);
+          deleteOverlay.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        }
       });
     });
   }
+
   // Handle cancel booking buttons
   if (cancelBtns) {
     cancelBtns.forEach((btn) => {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
+        e.stopPropagation();
         const form = btn.closest("form");
         const formAction = form.getAttribute("action");
 
         // Update confirmation form action
-        const cancelForm = document.getElementById("cancel-booking-form");
-        cancelForm.setAttribute("action", formAction);
-
-        // Show cancel overlay
-        const cancelOverlay = document.getElementById("confirm-cancel-overlay");
-        cancelOverlay.style.display = "flex";
-        document.body.style.overflow = "hidden";
+        if (cancelForm && formAction) {
+          cancelForm.setAttribute("action", formAction);
+          cancelOverlay.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        }
       });
     });
   }
@@ -54,6 +57,7 @@ const setupConfirmationSystem = () => {
         document.body.style.overflow = "";
       });
     }
+
     // Click outside to close
     overlay.addEventListener("click", function (e) {
       if (e.target === overlay) {
@@ -64,5 +68,7 @@ const setupConfirmationSystem = () => {
   });
 };
 
-// Initialize confirmation system
-setupConfirmationSystem();
+// Initialize confirmation system when DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  setupConfirmationSystem();
+});
