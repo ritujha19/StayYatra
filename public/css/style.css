@@ -1,343 +1,242 @@
+/* Keep essential fonts and base styles */
 @font-face {
-    font-family: Samarkan;
-    src: url(fonts/samarkan.ttf) format(truetype);
+  font-family: "Samarkan";
+  src: url("/fonts/samarkan.ttf") format("truetype");
 }
 
 body {
-    font-family: Plus Jakarta Sans, sans-serif !important;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
+/* Keep modal styles - used in various modals */
 .modal-content:focus {
-    outline: none;
+  outline: none;
 }
 
+/* Keep icon styles - used in navbar and forms */
 .fa-eye {
-    color: #fe424d;
-    font-size: 1rem;
-}
-
-/* navbar */
-.navbar {
-    background-color: #ffffff;
-    font-size: 18px;
+  color: #fe424d;
+  font-size: 1rem;
 }
 
 .fa-compass {
-    color: #fe424d;
-    font-size: 2rem;
+  color: #fe424d;
+  font-size: 2rem;
+}
+
+/* Keep navbar styles */
+.navbar {
+  background-color: #ffffff;
+  font-size: 18px;
 }
 
 .nav-link {
-    color: #222222 !important;
+  color: #222222 !important;
 }
 
 .navbar-nav {
-    width: 100%;
-    padding: 0 25px !important;
-    justify-content: right !important;
+  width: 100%;
+  padding: 0 25px !important;
+  justify-content: right !important;
 }
 
 .nav-item {
-    padding-right: 25px !important;
+  padding-right: 25px !important;
 }
 
-/* footer */
+/* Keep footer styles */
 .Global {
-    font-weight: 500;
-}
-
-.f-info a {
-    text-decoration: none;
-    color: #222222;
-    font-size: 15px;
-}
-
-.f-info-links a:hover {
-    text-decoration: underline;
+  font-weight: 500;
 }
 
 .f-info {
-    display: flex;
-    flex-direction: row-reverse;
-    background-color: #ebebeb;
-    padding: 15px 20px;
-    margin-top: 20px;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-align: center;
+  justify-content: space-evenly;
+  background-color: #ebebeb;
+  padding: 15px 20px;
+  margin-top: 20px;
+  gap: 1rem;
 }
 
-.upper {
-    display: flex;
-    gap: 10px;
+/* keep child layout flexible */
+.f-info .upper,
+.f-info .msg {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
 }
 
-.msg {
-    display: flex;
-    gap: 5px;
+.f-info a {
+  text-decoration: none;
+  color: #222222;
+  font-size: 15px;
 }
 
-.f-info-copyright {
-    font-size: 15px;
+.f-info-links a:hover {
+  text-decoration: underline;
 }
 
 .f-info-socials {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .f-info-socials a {
-    font-size: 17px;
+  font-size: 17px;
 }
 
 .f-info-socials a:hover {
-    color: #fe424d;
+  color: #fe424d;
 }
 
+/* Keep Samarkan font styles - used in various places */
 .samarkan-font {
-    font-family: Samarkan, serif !important;
-    font-size: 2rem;
-    text-transform: capitalize !important;
+  font-family: "Samarkan", serif !important;
+  font-size: 2rem;
+  text-transform: capitalize !important;
 }
 
 #stayyatra,
 #Nivaas {
-    font-size: 3rem;
-    text-transform: capitalize !important;
+  font-size: 3rem;
+  text-transform: capitalize !important;
 }
 
-/* card index page */
+/* Keep card styles - used in listings */
 .card {
-    border: none !important;
-    margin-bottom: 2rem;
+  border: none !important;
+  margin-bottom: 2rem;
 }
 
 .card-img-top {
-    border-radius: 1rem !important;
-    width: 100% !important;
-    object-fit: cover !important;
-    height: 20rem !important;
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  height: 20rem !important;
 }
 
 .card-body {
-    padding: 0;
+  padding: 0;
 }
 
 .card-heading {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .card-text {
-    font-weight: 500;
-    font-size: 16px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
-/* show page */
+/* Keep show page styles */
 .show-img {
-    height: 300px !important;
-    object-fit: cover;
+  height: 300px !important;
+  object-fit: cover;
 }
 
 .show-container {
-    padding: 2rem 1rem;
+  padding: 2rem 1rem;
 }
 
 .show-card {
-    width: 100% !important;
-    margin-bottom: 1rem;
+  width: 100% !important;
+  margin-bottom: 1rem;
 }
 
-/* Centered overlay and blur effect */
+/* Keep confirmation overlay styles */
 .confirm-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4px);
-    z-index: 1050;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .confirm-delete-box {
-    background: #fff;
-    padding: 2rem 2.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    min-width: 300px;
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  min-width: 300px;
 }
 
-/* review styles */
+/* Keep review styles */
 .review-card {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 .review-actions {
-    min-width: 80px;
+  min-width: 80px;
 }
 
 .review-content {
-    max-width: calc(100% - 100px);
+  max-width: calc(100% - 100px);
 }
 
-/* edit page */
-.container-edit,
-.container-new,
-.container-profile {
-    max-width: 50%;
-    margin: 0 auto;
-}
-
-#successMsg {
-    display: none;
-    margin-bottom: 1rem;
-}
-
-.add-btn {
-    background-color: #fe424d !important;
-    color: white !important;
-    border: none !important;
-}
-
-.btn-link {
-    text-decoration: none !important;
-}
-
-.btn-link:hover {
-    color: #fe424d !important;
-}
-
-/* Zoom-in animation for Bootstrap modal */
-@keyframes modalZoomIn {
-    from {
-        transform: scale(0.7);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.modal .modal-dialog {
-    transform: scale(1);
-    transition: none;
-}
-
-.modal.show .modal-dialog {
-    animation: modalZoomIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.flash-message {
-    display: none !important;
-}
-
+/* Keep form styles */
 .togglePassword {
-    cursor: pointer;
-    padding: 0.375rem 0.75rem;
-    background-color: #f8f9fa !important;
-    border: 1px solid #ced4da !important;
-    border-left: none;
-}
-
-.togglePassword:hover {
-    background-color: #e9ecef !important;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  background-color: #f8f9fa !important;
+  border: 1px solid #ced4da !important;
+  border-left: none;
 }
 
 .input-group .password-input {
-    border-right: none;
+  border-right: none;
 }
 
-#newInputContainer {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 10px !important;
-}
-
-/* Show page styles */
-.container-show {
-    margin: 2rem auto !important;
-    padding: 0 1rem;
-    max-width: 800px !important;
-}
-
-.show-card {
-    width: 100% !important;
-    margin: 0 auto;
-}
-
-/* Modal and overlay styles */
-.modal {
-    z-index: 1060 !important;
-}
-
-.confirm-overlay {
-    z-index: 1050;
-}
-
-.modal-backdrop {
-    z-index: 1040 !important;
-    backdrop-filter: blur(5px);
-}
-
-/* Review styles */
-.reviews-card {
-    width: 100% !important;
-    margin-bottom: 1.5rem;
-}
-
-.reviewBox {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* Review card responsive styles */
-.review-actions {
-    min-width: 80px;
-}
-
-.review-content {
-    max-width: calc(100% - 100px);
-}
-
+/* Keep modal responsive styles */
 @media (max-width: 768px) {
-    .container-show {
-        margin: 1rem auto !important;
-    }
+  .container-show {
+    margin: 1rem auto !important;
+  }
 
-    .show-card {
-        width: 100% !important;
-    }
+  .card-img-top {
+    height: 200px !important;
+  }
 
-    .review-actions {
-        min-width: 60px;
-    }
+  .show-card {
+    width: 100% !important;
+  }
 
-    .review-actions .btn {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.875rem;
-    }
+  .review-actions {
+    min-width: 60px;
+  }
 
-    .modal-dialog {
-        margin: 0.5rem;
-        max-width: calc(100% - 1rem);
-    }
+  .review-actions .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
 
-    .modal-content {
-        max-height: calc(100vh - 2rem);
-        overflow-y: auto;
-    }
+  .modal-dialog {
+    margin: 0.5rem;
+    max-width: calc(100% - 1rem);
+  }
 
-    .offset-2,
-    .offset-3,
-    .offset-4 {
-        margin-left: 0 !important;
-    }
+  .modal-content {
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+
+  .offset-2,
+  .offset-3,
+  .offset-4 {
+    margin-left: 0 !important;
+  }
 }
 
 /* Fix modal stacking and blur - CORRECTED */
