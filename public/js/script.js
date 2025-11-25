@@ -41,4 +41,67 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
   }
-});
+
+  // ===== FIX DROPDOWN ISSUES =====
+  console.log("Initializing dropdown fix...");
+
+  // Method 1: Initialize Bootstrap dropdowns manually
+  const dropdownElementList = document.querySelectorAll('[data-bs-toggle="dropdown"]');
+  if (dropdownElementList.length > 0) {
+    console.log("Found", dropdownElementList.length, "dropdown(s)");
+   
+    dropdownElementList.forEach(function(dropdownToggle) {
+      // Create Bootstrap dropdown instance
+      try {
+        new bootstrap.Dropdown(dropdownToggle);
+        console.log("Dropdown initialized for:", dropdownToggle);
+      } catch (error) {
+        console.error("Error initializing dropdown:", error);
+      }
+    });
+  }
+
+  // Method 2: Fallback manual toggle (in case Bootstrap fails)
+  dropdownElementList.forEach(function(dropdown) {
+    dropdown.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+     
+      console.log("Dropdown clicked!");
+     
+      // Get the dropdown menu
+      const menu = this.nextElementSibling;
+     
+      if (menu && menu.classList.contains('dropdown-menu')) {
+        // Close all other dropdowns first
+        document.querySelectorAll('.dropdown-menu.show').forEach(function(openMenu) {
+          if (openMenu !== menu) {
+            openMenu.classList.remove('show');
+          }
+        });
+       
+        // Toggle current dropdown
+        menu.classList.toggle('show');
+        console.log("Dropdown toggled. Show class:", menu.classList.contains('show'));
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown-menu.show').forEach(function(menu) {
+        menu.classList.remove('show');
+      });
+    }
+  });
+
+  // Prevent dropdown from closing when clicking inside
+  document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
+    menu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  });
+
+  console.log("Dropdown initialization complete!");
+}); 

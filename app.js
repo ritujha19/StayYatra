@@ -36,11 +36,13 @@ mongoose
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')));
 app.engine("ejs", ejsMate);
 app.use(methodOverride("_method"));
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 // ✅ 3. Session configuration with env secret and mongo store
 const sessionConfig = {

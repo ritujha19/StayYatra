@@ -14,7 +14,7 @@ const setupConfirmationSystem = () => {
     deleteBtns.forEach((btn) => {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
-        e.stopPropagation();
+        // e.stopPropagation();
         const form = btn.closest("form");
         const formAction = form.getAttribute("action");
 
@@ -33,7 +33,7 @@ const setupConfirmationSystem = () => {
     cancelBtns.forEach((btn) => {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
-        e.stopPropagation();
+        // e.stopPropagation();
         const form = btn.closest("form");
         const formAction = form.getAttribute("action");
 

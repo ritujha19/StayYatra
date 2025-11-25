@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const maxCheckout = new Date(checkinDate);
       maxCheckout.setDate(maxCheckout.getDate() + 5);
 
-      // ✅ Update the existing checkout picker instead of recreating it
       checkoutPicker.setOptions({
         minDate: minCheckout,
         maxDate: maxCheckout,
@@ -119,7 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update the guest counter functions
   document.querySelectorAll(".plus-btn").forEach((btn) => {
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", function (e) {
+       e.preventDefault();  // Prevent dropdown from closing
       const type = this.getAttribute("data-type");
       const countSpan = document.getElementById(type + "-count");
       const hiddenInput = document.getElementById(type + "-count-input");
@@ -132,7 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelectorAll(".minus-btn").forEach((btn) => {
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();  // Prevent dropdown from closing
       const type = this.getAttribute("data-type");
       const countSpan = document.getElementById(type + "-count");
       const hiddenInput = document.getElementById(type + "-count-input");
