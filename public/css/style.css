@@ -123,14 +123,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  /* Fix navbar collapse */
-  .navbar-collapse {
-    background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 0.5rem;
-  }
 
   .navbar-nav {
     flex-direction: column;
@@ -332,14 +324,14 @@ body {
   }
 }
 
-.modal .modal-dialog {
+/* .modal .modal-dialog {
   transform: scale(1);
   transition: none;
 }
 
 .modal.show .modal-dialog {
   animation: modalZoomIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
+} */
 
 .flash-message {
   display: none !important;

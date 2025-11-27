@@ -115,16 +115,6 @@
           duration: 1000,
           once: true,
         });
-
-        // Check for login errors safely
-        const loginErrors =
-          '<%= typeof loginError !== "undefined" ? loginError : "" %>';
-        if (loginErrors && loginErrors.length > 0) {
-          const loginModal = new bootstrap.Modal(
-            document.getElementById("loginModal")
-          );
-          loginModal.show();
-        }
       });
     </script>
   </body>

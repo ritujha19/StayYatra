@@ -1,12 +1,10 @@
 <!-- ✅ LOGIN MODAL with proper Bootstrap 5 attributes -->
 <div
-  class="modal"
+  class="modal fade"
   id="loginModal"
   tabindex="-1"
   aria-labelledby="loginModalLabel"
   aria-hidden="true"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
 >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -86,15 +84,15 @@
             <a href="#" id="openForgotPasswordModal">Forget password?</a>
           </div>
           <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-success">
               <i class="fas fa-sign-in-alt me-2"></i>Login
             </button>
           </div>
           <div class="text-center mt-3">
             <span class="text-muted">New here?</span>
             <a href="#" id="openRegisterFromLogin" class="text-decoration-none"
-              >Create an account</a
-            >
+              >Create an account
+            </a>
           </div>
         </form>
       </div>
