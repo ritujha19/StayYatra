@@ -89,14 +89,9 @@ body {
 
 .nav-links {
   display: flex;
+  justify-content: space-evenly!important;
   gap: 1rem;
   color: #222222 !important;
-}
-
-/* Ensure dropdown works properly */
-.dropdown-menu {
-  position: absolute !important;
-  z-index: 1000;
 }
 
 @media (max-width: 991px) {
@@ -122,7 +117,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
 
   .navbar-nav {
     flex-direction: column;
@@ -140,18 +135,6 @@ body {
     padding-right: 0 !important;
     width: 100%;
     margin-bottom: 0.5rem;
-  }
-
-  /* Fix dropdown in mobile */
-  .nav-item.dropdown {
-    width: 100%;
-    margin: 0.5rem 0;
-  }
-
-  .dropdown-menu {
-    width: 100%;
-    position: static !important; /* Important for mobile */
-    margin-top: 0.5rem;
   }
 
   .d-flex.align-items-center.link-dark {
@@ -324,14 +307,14 @@ body {
   }
 }
 
-/* .modal .modal-dialog {
+.modal .modal-dialog {
   transform: scale(1);
   transition: none;
 }
 
 .modal.show .modal-dialog {
   animation: modalZoomIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-} */
+}
 
 .flash-message {
   display: none !important;

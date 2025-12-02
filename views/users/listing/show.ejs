@@ -1,94 +1,106 @@
 <% layout("/layouts/boilerplate.ejs") %>
-
-<div class="container-show" data-aos="zoom-out">
-    <div class="card show-card" style="width: 25rem">
-        <h4 class="card-title mb-3"><%= listing.title %></h4>
-        <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing image" style="height: 200px; object-fit: cover;">
-        <div class="card-body">
-            <p class="card-text"><%= listing.description %></p>
-            <p class="card-text">Price: &#8377; <%= listing.price.toLocaleString("en-IN") %></p>
-            <p class="card-text">Location: <%= listing.location %></p>
-            <p class="card-text">
-        <strong>What we provide:</strong>
-       <% 
-  // Filter out empty strings
-  const validAddons = listing.addons ? listing.addons.filter(addon => addon.trim() !== "") : []; 
-%>
-<ul class="list-group mt-2">
-  <% if (validAddons.length > 0) { %>
-    <% validAddons.forEach(addon => { %>
-      <li class="list-group-item">
-        <i class="fas fa-check text-success me-2"></i>
-        <%= addon %>
-      </li>
-    <% }); %>
-  <% } else { %>
-    <li class="list-group-item">No amenities listed</li>
-  <% } %>
-</ul>
-
-      </p>
-            <div class="btns d-flex justify-content-evenly">
-                <a href="/listing/<%= listing._id %>/edit" class="btn btn-outline-success bg-success-subtle text-success-emphasis">Edit</a>
-                <!-- Listing Delete Button/Form -->
-                <form class="d-inline" id="delete-listing-form" action="/listing/<%= listing._id %>?_method=DELETE" method="POST">
-                    <button type="button" class="btn btn-outline-danger bg-danger-subtle text-danger-emphasis delete-btn">Delete</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Move confirmation overlay outside main container -->
-<div class="confirm-overlay" id="confirm-delete-overlay" style="display: none;">
-    <div class="confirm-delete-box" data-aos="zoom-in">
-        <h4>Confirm Delete</h4>
-        <p>Are you sure you want to delete this Nivaas?</p>
-        <div class="confirm-buttons d-flex justify-content-evenly">
-            <form id="delete-form" method="POST">
-                <button type="submit" class="btn btn-danger confirm">
-                    Yes, Delete
-                </button>
-            </form>
-            <button type="button" class="btn btn-secondary cancel-overlay-close">
-                Cancel
-            </button>
-        </div>
-    </div>
-</div>
-
-<hr>
-
-<div class="reviewBox" data-aos="zoom-out">
-    <h4 class="text-center mb-4">All Reviews</h4>
-    <% if (listing.reviews.length === 0) { %>
-        <p class="text-center">No reviews yet.</p>
-    <% } else { %>
+    <div class="container show-container" data-aos="zoom-out">
         <div class="row justify-content-center">
-            <% for(let review of listing.reviews) { %>
-                <div class="col-md-6">
-                    <div class="reviews-card">
-                        <div class="card review-card">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <% if (review.author) { %>
-                                    <%= review.author.username %>
-                                    <% } else { %>
-                                    Unknown user
-                                    <% } %>
-                                </h5>
-                                <p class="card-text">
-                                    <%= review.rating %>
-                                    <% for(let i = 1; i <= review.rating; i++) { %>
-                                        ⭐
-                                    <% } %> 
-                                </p>
-                                <p class="card-text"><%= review.comment %></p>
-                            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="card show-card" style="width: 25rem;">
+                    <h4 class="card-title mb-3">
+                        <%= listing.title %>
+                    </h4>
+                    <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing image"
+                    >
+                    <div class="card-body">
+                        <p class="card-text">
+                            <%= listing.description %>
+                        </p>
+                        <p class="card-text">Price: &#8377; <%= listing.price.toLocaleString("en-IN") %>
+                        </p>
+                        <p class="card-text">Location: <%= listing.location %>
+                        </p>
+                        <p class="card-text">
+                            <strong>What we provide:</strong>
+                            <% const validAddons = listing.addons.filter(addon=> addon.trim() !== ""); %>
+                            <ul class="list-group mt-2">
+                                <% if (validAddons.length> 0) { %>
+                                    <% validAddons.forEach(addon=> { %>
+                                        <li class="list-group-item">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            <%= addon %>
+                                        </li>
+                                    <% }); %>
+                                <% } else { %>
+                                    <li class="list-group-item">No amenities listed</li>
+                                <% } %>
+                            </ul>
+                        </p>
+
+                        <div class="btns d-flex justify-content-evenly">
+                            <a href="/listing/<%= listing._id %>/edit"
+                                class="btn btn-outline-success bg-success-subtle text-success-emphasis">Edit</a>
+                            <!-- Listing Delete Button/Form -->
+                            <form class="d-inline" id="delete-listing-form"
+                                action="/listing/<%= listing._id %>?_method=DELETE" method="POST">
+                                <button type="button"
+                                    class="btn btn-outline-danger bg-danger-subtle text-danger-emphasis delete-btn">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            <% } %>    
+            </div>
         </div>
-    <% } %>
-</div>
+    </div>
+
+    <!-- Move confirmation overlay outside main container -->
+    <div class="confirm-overlay" id="confirm-delete-overlay" style="display: none;">
+        <div class="confirm-delete-box" data-aos="zoom-in">
+            <h4>Confirm Delete</h4>
+            <p>Are you sure you want to delete this Nivaas?</p>
+            <div class="confirm-buttons d-flex justify-content-evenly">
+                <form id="delete-form" method="POST">
+                    <button type="submit" class="btn btn-danger confirm">
+                        Yes, Delete
+                    </button>
+                </form>
+                <button type="button" class="btn btn-secondary cancel-overlay-close">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="reviewBox" data-aos="zoom-out">
+        <h4 class="text-center mb-4">All Reviews</h4>
+        <% if (listing.reviews.length===0) { %>
+            <p class="text-center">No reviews yet.</p>
+            <% } else { %>
+                <div class="row justify-content-center">
+                    <% for(let review of listing.reviews) { %>
+                        <div class="col-md-6">
+                            <div class="reviews-card">
+                                <div class="card review-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <% if (review.author) { %>
+                                                <%= review.author.username %>
+                                                    <% } else { %>
+                                                        Unknown user
+                                                        <% } %>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%= review.rating %>
+                                                <% for(let i=1; i <=review.rating; i++) { %>
+                                                    ⭐
+                                                    <% } %>
+                                        </p>
+                                        <p class="card-text">
+                                            <%= review.comment %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+                <% } %>
+    </div>

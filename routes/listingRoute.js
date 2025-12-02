@@ -75,7 +75,6 @@ router.post(
 // EDIT - Only owner can edit
 router.get(
   "/:id/edit",
-  isLoggedIn,
   isOwner,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
@@ -87,7 +86,6 @@ router.get(
 // UPDATE - Only owner can update
 router.put(
   "/:id",
-  isLoggedIn,
   isOwner,
   validateListing,
   wrapAsync(async (req, res) => {
@@ -103,7 +101,6 @@ router.put(
 // DELETE - Only owner can delete
 router.delete(
   "/:id",
-  isLoggedIn,
   isOwner,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
