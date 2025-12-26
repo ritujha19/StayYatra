@@ -80,7 +80,7 @@ router.delete(
     await Review.findByIdAndDelete(reviewId);
 
     req.flash("success", "Review deleted successfully!");
-    res.redirect(`/listing/${id}/show`);
+    res.redirect(`/user/my-reviews`);
   })
 );
 

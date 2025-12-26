@@ -35,12 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
   if (openRegisterFromLogin) {
     openRegisterFromLogin.addEventListener("click", function (e) {
       e.preventDefault();
-      loginModalEl.addEventListener(
-        "hidden.bs.modal",
-        () => bootstrap.Modal.getOrCreateInstance(registerModalEl).show(),
-        { once: true }
-      );
       bootstrap.Modal.getOrCreateInstance(loginModalEl).hide();
+      setTimeout(() => {
+        bootstrap.Modal.getOrCreateInstance(registerModalEl).show();
+      }, 100);
     });
   }
 
@@ -48,12 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
   if (openLoginFromRegister) {
     openLoginFromRegister.addEventListener("click", function (e) {
       e.preventDefault();
-      registerModalEl.addEventListener(
-        "hidden.bs.modal",
-        () => bootstrap.Modal.getOrCreateInstance(loginModalEl).show(),
-        { once: true }
-      );
       bootstrap.Modal.getOrCreateInstance(registerModalEl).hide();
+      setTimeout(() => {
+        bootstrap.Modal.getOrCreateInstance(loginModalEl).show();
+      }, 100);
     });
   }
 
@@ -61,20 +57,21 @@ document.addEventListener("DOMContentLoaded", function () {
   if (openForgotPasswordBtn) {
     openForgotPasswordBtn.addEventListener("click", function (e) {
       e.preventDefault();
-      loginModalEl.addEventListener(
-        "hidden.bs.modal",
-        () => bootstrap.Modal.getOrCreateInstance(forgotPasswordModalEl).show(),
-        { once: true }
-      );
       bootstrap.Modal.getOrCreateInstance(loginModalEl).hide();
+      setTimeout(() => {
+        bootstrap.Modal.getOrCreateInstance(forgotPasswordModalEl).show();
+      }, 100);
     });
   }
 
- document.addEventListener("hidden.bs.modal", function () {
-  // Only clean when ALL modals are closed
-  if (!document.querySelector(".modal.show")) {
-    document.body.classList.remove("modal-open");
-    document.querySelectorAll(".modal-backdrop").forEach(b => b.remove());
-  }
-});
+  document.addEventListener("hidden.bs.modal", function () {
+    // Only clean when ALL modals are closed
+    if (!document.querySelector(".modal.show")) {
+      document.body.classList.remove("modal-open");
+      const backdrops = document.querySelectorAll(".modal-backdrop");
+      if (backdrops.length > 0) {
+        backdrops.forEach(b => b.remove());
+      }
+    }
+  });
 });

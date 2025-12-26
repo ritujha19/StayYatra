@@ -3,23 +3,25 @@
   rel="stylesheet"
 />
 <footer class="mt-auto">
-  <div class="f-info">
-    <div class="upper">
+  <div class="f-info d-flex flex-column justify-content-between align-items-center gap-2">
+    <div class="upper d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center w-100 gap-3">
       <!-- Social Links and Global Icon -->
       <a href="#" class="Global"
         ><i class="fas fa-globe"></i>&nbsp;&nbsp; English (IN)</a
       >
-      <div class="f-info-socials">
+      <div class="f-info-socials d-flex gap-3">
         <a href="#"><i class="fab fa-facebook"></i></a>
         <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
 
-    <div class="msg">
+    <div class="msg d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start w-100 gap-2">
       <!-- Copyright Message -->
-      <div class="f-info-copyright text-center mt-3">
-        <p>&copy; <%= new Date().getFullYear() %> StayYatra Private Limited.</p>
+      <div class="f-info-copyright">
+        <p class="mb-0">
+          &copy; <%= new Date().getFullYear() %> StayYatra Private Limited
+        </p>
       </div>
       <!-- Footer Links -->
       <div class="f-info-links">

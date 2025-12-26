@@ -297,7 +297,7 @@ const listings = [
     description:
       "Camp under the stars in the Thar Desert with camel rides, Rajasthani folk shows, and sand dune sunsets.",
     image:
-      "https://www.tourpackagejaisalmer.com/blog/wp-content/uploads/2024/03/An-Unforgettable-Evening-at-a-Jaisalmer-Desert-Camp.jpg",
+      "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/7054a4d1-e26d-5323-a14b-fe3a6e9a09ae/6257f57e-c7ae-5b04-976a-b25dd14886af.jpg",
     price: 2500,
     location: "Jaisalmer, Rajasthan",
     addons: [
@@ -629,7 +629,7 @@ const listings = [
     title: "Jodhpur Blue City Guest House",
     description:
       "Cosy guesthouse in the heart of the blue city, steps from the fort.",
-    image: "https://www.yogiguesthouse.com/jodhpur/4.jpg",
+    image: "https://mediawtravel.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2018/12/30030705/23.28.1-The-Blue-City-and-Mehrangarh-Fort-by-Sean-Hsu.jpg",
     price: 850,
     location: "Old City, Jodhpur",
     addons: [

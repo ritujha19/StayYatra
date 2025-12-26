@@ -97,9 +97,15 @@ router.get(
         select: "title price location image",
       },
     });
+    
+    // Filter out bookings with null listings (deleted listings)
+    const validBookings = user.userBooking.filter(booking => booking.listing !== null);
+    
     res.render("users/booking/myBookedNivaas", {
-      user,
-      userBooking: user.userBooking.map((booking) => booking.listing),
+      user: {
+        ...user.toObject(),
+        userBooking: validBookings,
+      },
     });
   })
 );
