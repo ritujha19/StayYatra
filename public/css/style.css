@@ -330,7 +330,13 @@ body {
 }
 
 #newInputContainer {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 10px !important;
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  gap: 10px;
+}
+
+#newInputContainer > div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

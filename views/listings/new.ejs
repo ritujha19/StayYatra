@@ -96,7 +96,7 @@
       </button>
     </div>
 
-    <button type="submit" class="btn add-btn ">Create</button>
+    <button type="submit" class="btn add-btn">Create</button>
   </form>
 </div>
 
@@ -106,6 +106,8 @@
     const container = document.getElementById("newInputContainer");
     const newInputDiv = document.createElement("div");
     const newInput = document.createElement("input");
+    const wrapper = document.createElement("div");
+    wrapper.className = "d-flex gap-2 mb-2";
     newInputDiv.classList.add("col-md-11");
     newInput.type = "text";
     newInput.name = "listing[addons][]";
@@ -116,13 +118,12 @@
     closeButton.innerHTML =
       '<button class="btn"><i class="fa-solid fa-xmark"></i></button>';
     closeButton.className = "col-md-1 ";
-    newInputDiv.appendChild(newInput);
-    container.appendChild(newInputDiv);
-    container.appendChild(closeButton);
+    wrapper.appendChild(newInput);
+    wrapper.appendChild(closeButton);
+    container.appendChild(wrapper);
     closeButton.onclick = function (e) {
       e.preventDefault();
-      container.removeChild(newInputDiv);
-      container.removeChild(closeButton);
+      container.removeChild(wrapper);
     };
   }
 </script>
