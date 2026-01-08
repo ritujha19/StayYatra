@@ -77,8 +77,10 @@ Add role-based access
 Optimize performance
 
 ## Author
-Ritu Rani
+Ritu Rani 
+
 trying to learn what i need to do in life 😊
+
 GitHub: https://github.com/ritujha19
 
 ## Note
