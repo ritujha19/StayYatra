@@ -78,7 +78,7 @@ Optimize performance
 
 ## Author
 Ritu Rani
-Aspiring Full-Stack Developer
+trying to learn what i need to do in life 😊
 GitHub: https://github.com/ritujha19
 
 ## Note
